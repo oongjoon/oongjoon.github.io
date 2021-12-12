@@ -12,7 +12,7 @@ tags:
 # classes : wide
 toc: true
 toc_sticky: true
-published : false
+
 ---
 This article was written after listening to Coursera's batch norm lecture. Rather than summarizing the lecture content as it is, it is an article expressed in my own words.
 
