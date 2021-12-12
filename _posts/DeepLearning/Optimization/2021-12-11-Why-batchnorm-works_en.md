@@ -45,7 +45,7 @@ There is the output of the second hidden layer, $$ a^{[2]} $$. ***<u>From the pe
 
 ![image](https://user-images.githubusercontent.com/50165842/145678460-dcf38ef3-1bf6-43b5-8af1-913b8511740e.png)
 
-However, the parameters are updated through the learning of the hidden layer of the first and second layers. That is since the distribution of $$ a^{[2]} $$ changes every time, from the perspective of the whole Neural Net, generalization is attempted on a new input every time. That is, a covariance shift occurs. Therefore, the mean and variance are unified through the batch norm to enable faster convergence. Again, mean and variance do not always follow N(0,1) after normalization. $$ Using the learnable parameters of \alpha and \beta $$, mean and variance are also updated with values that generalize well.
+However, the parameters are updated through the learning of the hidden layer of the first and second layers. That is since the distribution of $$ a^{[2]} $$ changes every time, from the perspective of the whole Neural Net, generalization is attempted on a new input every time. That is, a covariance shift occurs. Therefore, the mean and variance are unified through the batch norm to enable faster convergence. Again, mean and variance do not always follow N(0,1) after normalization. Using the learnable parameters of $$  \alpha $$ and $$ \beta $$, mean and variance are also updated with values that generalize well.
 
 
 
