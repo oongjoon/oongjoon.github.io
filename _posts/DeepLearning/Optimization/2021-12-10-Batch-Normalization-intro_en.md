@@ -36,11 +36,11 @@ $$ \mu = \frac {\Sigma z^{(2)}_{i}} {m} $$
 
 $$ \sigma = \frac {(\Sigma z^{(2)}_{i} - \mu )^2} {m} $$
 
-$$ z_{norm}^{(i)}  =  \frac {(\Sigma z^{(2)}_{i} - \mu )}{\sqrt {\mu} } $$
+$$ z_{norm}^{(i)}  =  \frac {(\Sigma z^{(2)}_{i} - \mu )}{\sqrt {\sigma} } $$
 
 However, this will disable the calculation if $$\Sigma$$ becomes zero. So, the calculation is as follows.
 
-$$ z_{norm}^{(i)}  =  \frac {(\Sigma z^{(2)}_{i} - \mu )} {\sqrt {\Sigma^2 + \epsilon}  } $$
+$$ z_{norm}^{(i)}  =  \frac {(\Sigma z^{(2)}_{i} - \mu )} {\sqrt {\sigma^2 + \epsilon}  } $$
 
  
 
@@ -50,5 +50,5 @@ if you use $$ z_{norm}$$  as is , The distribution will follow N(0,1). However, 
 
 $$ \widehat{z} = \alpha z_{norm} + \beta $$  
 
-this expression is written like above. If you write like this   $$ \alpha =  {\sqrt {\Sigma^2 + \epsilon}  }, \beta = \mu $$ . we use  $$ \alpha , \beta $$ as learnable parameters . So, the mean and variance follow the desired distribution. 
+this expression is written like above. If you write like this   $$ \alpha =  {\sqrt {\sigma^2 + \epsilon}  }, \beta = \mu $$ . we use  $$ \alpha , \beta $$ as learnable parameters . So, the mean and variance follow the desired distribution. 
 
