@@ -13,7 +13,9 @@ tags:
 toc: true
 toc_sticky: true
 ---
-This article is going to cover Exponentially Weighted Average and Momentum, which were covered in DLS. I reviewed it once again and wrote it as a Closed Book 3 days later.
+2021-01-04 Intro , Exponentially Weighted Average added
+
+This article will discuss Exponentially Weighted Average and Momentum. Exponentially Weighted Average provides a solution that can solve the problem of stochastic gradient with only the gradient for each step. I reviewed it again and wrote it as a Closed Book 3 days later.
 
 ## Exponentially  Weighted Average
 
