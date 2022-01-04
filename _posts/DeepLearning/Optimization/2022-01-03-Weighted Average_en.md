@@ -25,6 +25,12 @@ DLS describes Exponentially Weighted Average as an example of calculating the av
 
 
 
+
+
+![image](https://user-images.githubusercontent.com/50165842/147940701-fad10109-5d98-4c94-a202-9b47944b59f3.png)
+
+
+
 $$ V_0 =  (1-\beta) \theta_0  $$
 
 $$ V_1 =  \beta V_1 + (1 - \beta ) \theta_{0} $$
@@ -32,8 +38,6 @@ $$ V_1 =  \beta V_1 + (1 - \beta ) \theta_{0} $$
 $$... $$
 
 $$ V_n =  \beta V_n + (1 - \beta ) \theta_{n-1} $$  
-
-![image](https://user-images.githubusercontent.com/50165842/147940701-fad10109-5d98-4c94-a202-9b47944b59f3.png)
 
 
 
@@ -58,7 +62,7 @@ And, Professor Andrew explains the reason for the average that roughly reflects 
 
 Since $$ (1 - \epsilon) ^{1 \over \epsilon} = {1 \over e } $$ , it is said to reflect the latest data as much as $$ {1-\beta} $$. I've also tried calculating the geometric series, and a ratio of about 0.7 comes out, and the professor says it's the rule of thumb, but for now, I decided to just accept it.
 
-To do the calculation, we would compute the expression ,$$ \sum_{k=1}^10 { (1- \beta) \beta^{k-1}} $$. The data reflection ratio of the latest 10 temperatures is about 0.7. This is true even if it becomes $$ n \to \infty$$ . I think you expressed it that way because you used the expression rule of thumb empirically because it reflected the amount of data as much as $$1 \over {1-\beta} $$
+To do the calculation, we would compute the expression ,$$ \sum_{k=1}^{10} =  { (1- \beta) \beta^{k-1}} $$. The data reflection ratio of the latest 10 temperatures is about 0.7. This is true even if it becomes $$ n \to \infty$$ . I think you expressed it that way because you used the expression rule of thumb empirically because it reflected the amount of data as much as $$1 \over {1-\beta} $$
 
 ## Gradient Descent Momentum
 
