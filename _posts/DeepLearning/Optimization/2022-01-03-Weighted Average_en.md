@@ -1,5 +1,5 @@
 ---
-title : "Weighted Average and Momentum"
+title : "Exponentially Weighted Average and Momentum"
 
 
 
@@ -159,4 +159,16 @@ If the above expression is applied as it is when implementing the actual impleme
 ### gradient descent vs gradient decent momentum
 
 You can use gradient descent to reflect the latest data like momentum. For example, if $$\beta$$ is 0.99, you can put gradients for 100 data in memory. However, momentum can solve this with one line of code. Although statistics are not essential, I felt that it could be a good tool in advancing algorithms.
+
+
+
+## Reference
+
+[1] [Improving Deep Neural Networks: Hyperparameter Tuning, Regularization and Optimization - 홈 | Coursera](https://www.coursera.org/learn/deep-neural-network/home/welcome)
+
+[2] [deeplearningbook optimization](https://www.deeplearningbook.org/contents/optimization.html)
+
+[3] [Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems: Géron, Aurélien: 9781492032649: Amazon.com: Books](https://www.amazon.com/Hands-Machine-Learning-Scikit-Learn-TensorFlow/dp/1492032646)
+
+[4] [Drag (physics) - Wikipedia](https://en.wikipedia.org/wiki/Drag_(physics))
 
