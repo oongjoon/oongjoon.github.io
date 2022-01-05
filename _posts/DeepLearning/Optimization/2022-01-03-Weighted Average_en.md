@@ -64,6 +64,38 @@ Since $$ (1 - \epsilon) ^{1 \over \epsilon} = {1 \over e } $$ , it is said to re
 
 To do the calculation, we would compute the expression ,$$ \sum_{k=1}^{10} =  { (1- \beta) \beta^{k-1}} $$. The data reflection ratio of the latest 10 temperatures is about 0.7. This is true even if it becomes $$ n \to \infty$$ . I think you expressed it that way because you used the expression rule of thumb empirically because it reflected the amount of data as much as $$1 \over {1-\beta} $$
 
+Assuming that the total number of weather is infinite, the desired interested ratio can be obtained instead of simply having a interested ratio of 0.7.
+
+  Suppose we show that avearge is the avearge of the 1 .. k th term.
+
+$$ \alpha [ {(1-\alpha) }^k + {(1-\alpha) }^{k+1} + {(1-\alpha) }^{k +2} ... ] $$
+
+The above will not be interseted term.
+
+$$ \alpha {(1-\alpha) }^k [1 + {(1-\alpha) }^1 + {(1-\alpha) }^2 ... ] $$
+
+The above term can be written like this:
+
+$$ {weighted \ omitted \ by \ stopping \ after\ k \ terms \over \ total \ weight} $$
+
+$$ = { \alpha [ {(1-\alpha) }^k + {(1-\alpha) }^{k+1} + {(1-\alpha) }^{k +2} ... ] \over {\alpha (1-\alpha) }^k [1 + {(1-\alpha) }^1 + {(1-\alpha) }^2 ... ] }$$
+
+$$ = { \alpha {(1-\alpha) }^k \over {1 \over {1 - (1-\alpha )}} }$$
+
+$$ = {(1-\alpha) }^k $$
+
+
+
+Therefore, formulating how many terms are excluded from the total can be expressed as above. For example, let's make the k-th term reflect 99% of the time.
+$$ 0.01 = {(1-\alpha) }^k $$
+$$ k = {\ln (0.01)} \over {\ln (1-\alpha)} $$
+will be The Taylor series says that $$ \alpha \to 0 \ as \ N \to \inf $$ gives $$ \ln { (1-alpha) } \to {- \alpha } $$ .
+
+$$ k \approx { {\ln (0.01)} \over {- \alpha} }$$
+
+You will get the relation When $$ \alpha = 0 .1$$ , it is possible to reflect 90 percent of the approximate 23 terms.
+(If there is something in the description that is not correct, please leave a comment or an email.)
+
 ## Gradient Descent Momentum
 
 ![image](https://user-images.githubusercontent.com/50165842/147993452-2b86a0af-a5ac-418c-99ed-32ce11c60458.png)
