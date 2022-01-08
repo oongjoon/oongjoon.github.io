@@ -46,11 +46,11 @@ And, looking at this picture and several YouTube lectures, I wrote down the unre
 
 Roughly, it seems that there were about 10 revisions like this. I am going to study git with an emphasis on solving these questions.
 
-## VCS란?
+## What is VCS?
 
 VCS stands for Version Control System. VCS records changes in files over time and makes it possible to refer to previous versions. I think VCS is essential in any software domain. Through this, we can revert to the previous version as a whole on a project-by-project basis, when a file is changed, we can compare the differences with the file of the previous version, and when a problem occurs, we can find out who caused the problem, who caused the problem, and who You can see if you created an issue. It is really great to be able to enjoy these conveniences at a low cost because the Version Control System uses a computer instead of a person to record and manage these things one by one.
 
-## VCS의 역사
+## History of VCS
 
 If you read the above, you can see that VCS existed before git. Let's see how we implemented and used VCS in the past.
 
