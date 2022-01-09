@@ -29,7 +29,7 @@ If you use the Recursive Algorithm, a new stackframe namespace is created based 
 
 If the binary tree is a perfect binary tree, the height of the tree will be $$O(\log n)$$. Therefore, a stackframe of at least $$ O(\log n)$$ will be created.
 
-![Time Complexity of Binary Search Tree | Gate Vidyalay](https://www.gatevidyalay.com/wp-content/uploads/2018/08/Time-Complexity-of-Binary-Search-Tree-Worst-Case.png)
+![Creating a right skewed binary tree in C - Stack Overflow](https://i.stack.imgur.com/9w8b7.png)
 
 If the binary tree is skewed, the height of the tree will be $$O(n)$$. Therefore, stackframe will be created as many as $$O(n) $$ in the worst case. If there is an environment where stackframe creation is restricted, it will be a very big issue. 
 
