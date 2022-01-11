@@ -26,15 +26,17 @@ It is not an exaggeration to say that the natural language domain in deep learni
 
 To understand Attention Mechanism, it is necessary to know how the Encoder-Decoder Model (Seq2Seq Model) calculated the output before Attention. Before attention, the rnn series model calculated the output directly after linear transformation. On the left is the process of calculating the sequence output before attention. The example above is the process of translating the French sentence 'je bois du lait' from the English sentence 'milk drink I'. You can see that from `milk` to `lait` takes a very long time. Attention algorithm is an algorithm that solves how to make the context of the word `milk` short to `lait`. The attention algorithm is [1409.0473.pdf (arxiv.org)](https://arxiv.org/pdf/1409.0473.pdf) by[Dzmitry Bahdanau](https://arxiv.org/search/cs?searchtype=author&query= Bahdanau%2C+D), , [Kyunghyun Cho](https://arxiv.org/search/cs?searchtype=author&query=Cho%2C+K), [Yoshua Bengio](https://arxiv.org/search /cs?searchtype=author&query=Bengio%2C+Y). Algorithm introduced in . In the figure on the right, the algorithm they introduced is to create an architecuture of the model so that the decoder pays attention to a specific input word. It can be seen that the output of the hidden state $$h(i)$$ is calculated through the operation with the weight $$\alpha_{(t,i)}$$. weight $$\alpha_{(t,i)}$$ is the weight in the `t-th` decoder of the `i-th` encoder. For example, $$\alpha_{(3,2)}$$ will attract relatively more attention than $$\alpha_{(3,0)} , \alpha_{(3,0)} $$ no see. And, every `t-th`, the decoder will concatenate (additive) the encoder output and hidden state. Since Bahdanau Attention goes through the Time Distributed Layer, if the input sequence is n, the complexity of $$ O(n**2) $$ is calculated. If the output sequence is very long, quadratic order is critical, but it has little effect since the output is countable in thousands.
 
-Now let's see how to calculate $$\alpha_{(t,i)}$$ . For example, when calculating $$\alpha_{(t,i)}$$ , the hidden state $$h(t-1)$$
-
-and concatante. After that, $$e_{(t,i)}$$ is calculated through TimeDistributed (Dense Layer) (Time Distributed means parallel operation with a matrix). $$e_{(t,i)}$$ is a value indicating how aligned with the previous hidden state. ( When there are two sequences, it is convenient to think of the alignment score as a score indicating how continuous the two sequences are. [Alignment and Alignment Score (titech.ac.jp)](https://www.gsic.titech.ac .jp/supercon/supercon2004-e/alignmentE.html)) Then, a weighted sum is computed to give weight to which $$y_{(i)}$$ will receive more attention. At this time, the weighted sum is calculated using softmax. It is also called Bahdanau Attention or concatenate (additive) attention, after the main author Bandanau.
+Now let's see how to calculate $$\alpha_{(t,i)}$$ . For example, when calculating $$\alpha_{(t,i)}$$ , the hidden state $$h(t-1)$$ and concatante. After that, $$e_{(t,i)}$$ is calculated through TimeDistributed (Dense Layer) (Time Distributed means parallel operation with a matrix). $$e_{(t,i)}$$ is a value indicating how aligned with the previous hidden state. ( When there are two sequences, it is convenient to think of the alignment score as a score indicating how continuous the two sequences are. [Alignment and Alignment Score (titech.ac.jp)](https://www.gsic.titech.ac .jp/supercon/supercon2004-e/alignmentE.html)) Then, a weighted sum is computed to give weight to which $$y_{(i)}$$ will receive more attention. At this time, the weighted sum is calculated using softmax. It is also called Bahdanau Attention or concatenate (additive) attention, after the main author Bandanau.
 
 In addition to this, there is also Luong eAttention published in a paper at [[1508.04025\] Effective Approaches to Attention-based Neural Machine Translation (arxiv.org)](https://arxiv.org/abs/1508.04025). Since the purpose of Luong Attention was to find simliarity, similarity was calculated using dotproduct instead of TimeDistributed Layer (Dense). This is also called Luong Attention, or multiplicative attention. They calculate the simliarity score and calculate $$\alpha_{(t,i)}$$ through the softmax layer as in Bahdanau Attention. The peculiarity of these is that $$h(t)$$ is used instead of $$h(t-1)$$ for the decoder's hidden state. In addition to the dotproduct method, they proposed a general method that passed the TimeDistributed layer. And, they compared the performance of this method with the concatanate method, and the dotproduct, general method showed better performance than the concatanate method. Therefore, the concatanate method is not used well at present. Actually, Transformer also uses dotproduct method. These three things can be summarized in formulas as follows.
-$$\tilde {h(t)} = \sum_{i=1} {y_i \alpha_{(i,t)}}$$
-$$\alpha_{(i,t)} = {{exp{( e_{(i,t)}) }} \over {\sum_{i=1}{exp{ (e_{(i,t)} ) } }}}$$
 
-$$e_{(i,t)} = \begin{cases} h_{(t)} y_{(i)} & \qquad dot \\ h_{(t)}W y_{(i)} & \qquad general \\ v^TW_a[h_{(t-1)};y_{(i)}] & \qquad concatanate \end{cases}$$
+$$
+\begin{align}
+\tilde {h(t)} &= \sum_{i=1} {y_i \alpha_{(i,t)}}  \\
+\alpha_{(i,t)} &= \frac {exp{( e_{(i,t)}) }}  {\sum_{i=1}{exp{ (e_{(i,t)} ) } }} \\
+e_{(i,t)} &= \begin{cases} h_{(t)} y_{(i)} & \qquad dot \\ h_{(t)}W y_{(i)} & \qquad general \\ v^TW_a[h_{(t-1)};y_{(i)}] & \qquad concatanate \end{cases}
+\end{align}
+$$
 
 
 
@@ -50,7 +52,12 @@ $$e_{(i,t)} = \begin{cases} h_{(t)} y_{(i)} & \qquad dot \\ h_{(t)}W y_{(i)} & \
 multiheadAttention is a module constituting the transformers module introduced in the AttenionisAllyouneed paper. Before defining .Attention, let's take an example of how Attention calculates a score. For example, {"Subject" : "Choi Woongjun" , "Verb" : "I ate rice." , "where" : "at home"} Let's assume we have such a dictionary. When the sentence 'Choi Woong-jun ate rice' appears, the information 'where' should appear next. To know this, we will look up the keyword 'where' in the dictionary, and from there we will get the value 'at home'. And, I will complete the sentence 'Choi Woong-jun ate at home'. Here, using a query that considers the key, value, and context of this dictioary is a self-attention module that achieves multihead attention.
 
 However, it is difficult to use it to directly implement it. Because the inside of attention is a vector representation, it is not possible to select and use the key ‘where’ among the keys ‘subject’, ‘verb’, and ‘where’. If so, how should we utilize this vector representation? Here, it determines which `key` value to give more attention to by finding the similarity between `query` and `key` values, which are contextual information. To calculate the similarity, dot-product is used. Then, we use the softmax function to convert it to a weight with sum equal to 1. Using this, we get the value of . Here, the weight of the vector expressing the key ‘where’ will be close to 1, and the weights of the vectors expressing ‘subject’ and ‘verb’ will be close to 0 for the rest. When calculating the weighted sum for this, it will approximate the vector value representing 'at home', which is the value of 'where'. Expressing this as a formula is as follows.
-$$Attention(Q,K,V) = {softmax({{QK^T} \over {\sqrt{d_{keys}}}}) } \cdot V$$
+
+$$
+\begin{align}
+Attention(Q,K,V) =  {softmax(\frac {QK^T}  {\sqrt{d_{keys}}}) } \cdot V
+\end{align}
+$$
 
 Let's comment on the attention formula in more detail.
 
@@ -61,7 +68,7 @@ Let's comment on the attention formula in more detail.
 - It is said that the scaling factor $$\sqrt{d_{keys}}$$ prevents the softmax from growing so that it can be updated by calculating a small gradient value.
 - Actually, when implementing MaskedMultiheadAttention, it uses a technique that adds a very large negative value to each self-attention in the decoder, which is quite useful.
 
-And, in Transformers, there are encoder and decoder parts. Here, the encoder calculates from the input sentences with the same query, key, and value. Also, the decoder calculates the query, key, and value with the target sentence. However, in the case of the decoder, $$ P(y_{t}|y_{<t}) $$ has to be calculated, so as mentioned above, when calculating the softmax value using a very large negative value, the weight of the latter values is It makes it close to 0. And, the MultiheadAttention Layer comes out of the decoder, K and V use the vector representation (dictionary) created by the encoder, and Q uses the vector calculated from the maskedmulitheadattention.
+And, in Transformers, there are encoder and decoder parts. Here, the encoder calculates from the input sentences with the same query, key, and value. Also, the decoder calculates the query, key, and value with the target sentence. However, in the case of the decoder, $$ P(y_{t} \vert y_{<t}) $$ has to be calculated, so as mentioned above, when calculating the softmax value using a very large negative value, the weight of the latter values is It makes it close to 0. And, the MultiheadAttention Layer comes out of the decoder, K and V use the vector representation (dictionary) created by the encoder, and Q uses the vector calculated from the maskedmulitheadattention.
 
 ### Multihead-attention
 
@@ -87,7 +94,7 @@ A person can use the working memory of that moment to decide what to do next. It
 
 
 
-### Memory Cell 
+### Memory Cell
 
 
 
@@ -111,7 +118,7 @@ If we analogize this to MultiheadAttention in Transformers, it is similar to how
 
 ## Attention in optimization view
 
-What is attention, why it uses softmax as the hidden layer output, why it computes a weighted sum, and why $$Attention(Q,K,V) = {softmax({{QK^T} \over { \sqrt{d_{keys}}}}) } In the form of \cdot V$$ , we checked whether QK and V were matrix multiplication. This time, we will look at what advantages there are over the existing LSTM and GRU in terms of gradient optimization. Unlike LSTM and GRU, Explicit memory performs relatively well in propagation and backpropagation. In seq2seq based on LSTM and GRU, the cell state passing through the hidden layer passes through many layers, so there is a high probability that the gradient will explode or vanish. However, since explicit memory applies an attention mechanism to calculate gradient for each output, it can learn using gradient descent, unlike GRU and LSTM seq2seq, which calculates the context directly instead of using a weighted average. (respectively long duration)
+What is attention, why it uses softmax as the hidden layer output, why it computes a weighted sum, and why $$Attention(Q,K,V) = {softmax(\frac{QK^T} \over { \sqrt{d_{keys}}}) } In the form of \cdot V$$ , we checked whether QK and V were matrix multiplication. This time, we will look at what advantages there are over the existing LSTM and GRU in terms of gradient optimization. Unlike LSTM and GRU, Explicit memory performs relatively well in propagation and backpropagation. In seq2seq based on LSTM and GRU, the cell state passing through the hidden layer passes through many layers, so there is a high probability that the gradient will explode or vanish. However, since explicit memory applies an attention mechanism to calculate gradient for each output, it can learn using gradient descent, unlike GRU and LSTM seq2seq, which calculates the context directly instead of using a weighted average. (respectively long duration)
 
 
 
