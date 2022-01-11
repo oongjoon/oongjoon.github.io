@@ -58,7 +58,7 @@ Let's comment on the attention formula in more detail.
 - K is a matrix with the shape of $$[n_{keys} ,d_{keys}] $$ .
 - V is a matrix with the shape of $$[n_{keys} , d{values}] $$.
 - The shape of $$ QK^T $$ is $$[n_{queries} :n_{keys} ] $$ . And, the output of the softmax function also has the same shape. And, every row is in the form of a weighted sum with sum equal to 1. The shape of $$ QK^T$$ will be $$[n_{queries} :d_{values} ] $$ . You can think of each row as the result of one query.
-- It is said that the scaling factor $$\sqrt{d_{keys}$$ prevents the softmax from growing so that it can be updated by calculating a small gradient value.
+- It is said that the scaling factor $$\sqrt{d_{keys}}$$ prevents the softmax from growing so that it can be updated by calculating a small gradient value.
 - Actually, when implementing MaskedMultiheadAttention, it uses a technique that adds a very large negative value to each self-attention in the decoder, which is quite useful.
 
 And, in Transformers, there are encoder and decoder parts. Here, the encoder calculates from the input sentences with the same query, key, and value. Also, the decoder calculates the query, key, and value with the target sentence. However, in the case of the decoder, $$ P(y_{t}|y_{<t}) $$ has to be calculated, so as mentioned above, when calculating the softmax value using a very large negative value, the weight of the latter values is It makes it close to 0. And, the MultiheadAttention Layer comes out of the decoder, K and V use the vector representation (dictionary) created by the encoder, and Q uses the vector calculated from the maskedmulitheadattention.
