@@ -1,3 +1,17 @@
+---
+title : "Git file state and convert to each other"
+
+excerpt: "Git file state"
+
+categories:
+  - CI/CD
+tags:
+  - [SoftwareEngineering , VCS]
+# classes : wide
+toc: true
+toc_sticky: true
+---
+
 ## Git file state and convert to each other
 
 So far, I have classified the file status of git only as a committed state and a non-committed state. And, I've actually managed version files like that. However, files in git exist in a granular state. In fact, there may be no problems using VCS (Version Control System) by only dividing into two categories: files that are committed and files that are not. However, I am sure that if I know more in detail, I can use VCS better for the situation. Today, I studied the contents of the file state in Git Pro and wrote it as a closed book, and supplemented the lacking contents. Let's explain the File State in detail.
