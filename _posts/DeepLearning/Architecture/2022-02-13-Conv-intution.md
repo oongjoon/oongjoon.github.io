@@ -1,9 +1,9 @@
 ---
-title : "What is Attention?Why softmax in hidden layer output?"
+title : "Convolution Neural Network : intution"
 
 
 
-excerpt: "Attention and Explicit Memory"
+excerpt: "Convolution Intuition"
 
 categories:
   - DLArchitecture
@@ -119,7 +119,7 @@ Here, if padding is performed, the image size becomes (N-F+1+2p) * (N-F+1+2p).
 
 Up to now, the filter has been moved only by one space, but it is not necessary to move the filter by one space only. Stride determines how many spaces to move the filter.
 
-Considering this stride, the size of the output is $$ (\lfloor {{N+2p-f} \over S} \rfloor + 1 )(\lfloor {{N+2p-f} \over S }\rfloor + 1)$$.
+Considering this stride, the size of the output is $$ (\lfloor {(N+2p-f) \over S} \rfloor + 1 )(\lfloor {(N+2p-f) \over S }\rfloor + 1)$$.
 
 To put this into words, there is an element at the (0,0) position of the filter and an input pixel that does dot-product. We do +1 because we need to include both ends of the interval as described earlier. (It is convenient to think of the <= range in the vertical line.)
 
@@ -159,7 +159,7 @@ Let's define the general lth conv layer.
 - activation_size : n_h[l] * n_w[l] * n_c[l]
 - filter size: f[l] * f[l] * n_c[l-1] * n_c[l]
 - bias : 1 * 1 * 1* n_c[l]
-- n_h,w[l] = $$ (\lfloor {{n_h,w[l-1+2p[l]-f[l]} \over s[l]} \rfloor + 1 ) $$
+- n_h,w[l] = $$ (\lfloor {(n_h,w[l-1+2p[l]-f[l]) \over s[l]} \rfloor + 1 ) $$
 - A[l] : m * n_h[l] * n_w[l] * n_c[l]
 
 A[l] means the output result for m mini batches. Professor Andrew said that it is convenient if the implementation of the bias is in 4 dimensions, but personally I think that it means that the position is accessed in the same dimension as the weight, so it is easy to understand in terms of logic. If you look at the cs231n assignment, it was processed in one dimension, but it is thought to be a difference in coding style.
