@@ -1,5 +1,5 @@
 ---
-title : "Convolution Neural Network : intution"
+title : "Convolution Neural Network : intuition"
 
 
 
@@ -188,7 +188,17 @@ As you can see from the picture, this pooling operation is performed independent
 
 The important thing here is that pooling has no parameters. Because the operation of pooling requires max and average functions, there is no need for learnable parameters.
 
- 
+ # Why Convolution?
+
+At the beginning of the post, it was said that convolution can reduce parameters than MLP. Let's take a closer look at why reducing parameters and other reasons to use convolution.
+
+## Parameter sharing
+
+Convolution uses the same parameters for all pixels to create an activation map. Since the same parameters are used, the same feature can be found in different positions of the image. For example, when detecting vertical edges with a 3 x 3 filter, no other parameters are needed to detect the vertical edges on the left and right sides of the image. In other words, with fewer parameters than the multilayer perceptron. The same features can be extracted.
+
+## Sparse Connections
+
+Unlike the Fully Connected Layer, the activation map is not connected to all pixels of the input of each pixel. Therefore, even if the image is slightly damaged, even if it is slightly shifted, the overall feature extraction is not significantly affected. It is said to capture translation invariance well.
 
 # Reference
 
