@@ -14,7 +14,13 @@ toc: true
 toc_sticky: true
 ---
 
+
+
 It is not an exaggeration to say that the natural language domain in deep learning has risen rapidly after the publication of Attention is all you need in 2017 and Bert in 2019. With the advent of the architecture called Transformer, fine-tuning like VISION is possible in the NLP field, and various downstream tasks can be performed. The architecture called Transformer is composed of multiple multihead attention, and multihead attention is composed of a module called attention. The Attention module has one major difference from other deeplearning modules. Even though it is a hidden layer, the softmax function is used as the activation function. The softmax function transforms the inputs into a probability space. Since the statistics-based model needs to calculate the probability, it was used to find the probability in the output layer. About this, I asked several communities, but no one knew about it. While I was giving up, I happened to be able to confirm that about 5-6pg was allocated and described in the [Deep Learning](https://www.deeplearningbook.org/)(by Ian GoodFellow) book. (If you don't know, look for the book!) .and ,[Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems: ](https://www.amazon.com/Hands-Machine-Learning-Scikit-Learn -TensorFlow/dp/1492032646)(by [Aurelien Geron](https://tensorflow.blog/tag/aurelien-geron/)) gave me a more detailed understanding of the Attention concept. I would like to discuss this. (Excluding formulas as much as possible.) (This article focuses on the Attention module rather than the Transformer Architecture, so the description of the transformer architecutre is intentionally omitted.)
+
+
+
+2022-02-21 alignement modifed
 
 
 
@@ -110,9 +116,40 @@ This memory cell can be thought of as the cell state of the GRU and LSTM archite
 
 ### Why Memory Cell use vector?
 
+#### soft-alignment
+
+![image](https://user-images.githubusercontent.com/50165842/154868602-0d267e51-2917-4cb7-92f0-bd13984b85d4.png)
+
 Memory cells are referenced by the address location method, and in this case, it was difficult to accurately approximate the integer address for reading and writing with the existing method. Therefore, we tried to solve this problem by simultaneously reading and writing in the memory cell. At the same time, it reads all memory addresses and accesses the most likely address. That is, to read, a value was read from memory with a weighted average and a different value was written to each memory. It is a coefficient for performing operations on memory, allowing us to focus on a small number of memories. In this case, the softmax function was used. Through this , non-zero deriative, optimization is done through gradient descent. The gradient of the coefficient determines which weight to increase or decrease, but the row corresponding to the large value of the coefficient increases the gradient, so it is affected.
 
-You may be wondering what the above has to do with the use of vectors in Memory Cells. The first reason to use a memory cell as a set of vectors is that we have already increased the computation cost to read simultaneously (weighted average). Already, the computation cost has increased to about $$O(N^2) $$, so it is said that this cost is offset by reading the vector. (This part was a little ambiguous. I spent some time thinking about it, but in a neural turing machine , NTM, it was a method to obtain a weighted average by reading the shape (N,M) at the same time without approximating a specific location. Previously, mentioned as a problem One thing I did was to specify the exact integer address. The part to specify precisely is sequential operation, and reading as a vector value seems to have offset the computational cost more because matrix multiplication is performed in parallel operation.) Second, content-based reading is to do it. Existing LSTM and GRU `cell state` creates documents matching a certain pattern from all document information. With sigmoid we just increase the weight if the value is high and decrease the weight if the value is low. However, since the memory network chooses which pattern to find information (coefficient , weighted average), it searches only a few documents to find information (key, value dictionary). For example, to find documents containing the word 'corona', only documents grouped with the keyword 'corona' will be searched. Conversely, location based does not refer to content . This can be viewed similarly to 'Bring the document in the 347th document box'.
+If you explain this in more detail, you can say that it is the difference between hard-alignment and soft-alignment. The left is the hard-alignment method, and the right is the soft-alignment module .the right is what is known as calculating attention scores. Both methods have in common that the alignment vector is computed as a softmax. However, to use the hard-alginment method, you need to label with hard-coding to determine which word's encoding state should be set. However, the soft-alignment method does not require hard-coding labeling (alignment) to obtain the weighted-sum.
+
+Here, it is worth noting that the alignment vector is not directly hard-coding the desired output, meaning that it is no longer considered as a latent variable. In other words, it is not considered separately from the encoder-decoder model as a probability distribution with separate parameters, but it indicates that it is possible to train with gradient descent together with the entire model.
+
+
+
+#### computation cost reduced
+
+You may be wondering what the above has to do with the use of vectors in Memory Cells. The first reason to use a memory cell as a set of vectors is that we have already increased the computation cost to read simultaneously (weighted average). Already, the computation cost has increased to about $$O(N^2) $$, so it is said that this cost is offset by reading the vector. ~~(This part was a little ambiguous. I spent some time thinking about it, but in a neural turing machine , NTM, it was a method to obtain a weighted average by reading the shape (N,M) at the same time without approximating a specific location. Previously, mentioned as a problem One thing I did was to specify the exact integer address. The part to specify precisely is sequential operation, and reading as a vector value seems to have offset the computational cost more because matrix multiplication is performed in parallel operation.)~~ 
+
+If you look at item A.1.2 of the original paper[1], there is an explanation for this.
+$$
+\begin{align}
+
+ a(s_{i-1} , h) = e_{ij} = v_a^T \tanh (W_as_{i-1} + U_ah_{j}) 
+
+\end{align}
+$$
+
+Usually, it is calculated by concatenating the hidden state s of the decoder and the hidden state h of the encoder. In this paper, the hidden state of the encoder is precomputed using a matrix U in advance. Because it is independent on timestep i. I think that it means to reduce the compute cost because all timesteps are calculated in advance and used. The meaning of offsetting computation cost is probably explained in contrast to the existing hard-alignment method. Existing hard-alignment is concatenated to the fully-connected layer at every time-step and has to be given as an input to calculate the output.
+
+
+
+
+
+#### content-based 
+
+Second, content-based reading is to do it. Existing LSTM and GRU `cell state` creates documents matching a certain pattern from all document information. With sigmoid we just increase the weight if the value is high and decrease the weight if the value is low. However, since the memory network chooses which pattern to find information (coefficient , weighted average), it searches only a few documents to find information (key, value dictionary). For example, to find documents containing the word 'corona', only documents grouped with the keyword 'corona' will be searched. Conversely, location based does not refer to content . This can be viewed similarly to 'Bring the document in the 347th document box'.
 
 If we analogize this to MultiheadAttention in Transformers, it is similar to how multiheadattetntion in Decoder computes $$softmax(QK^T)$$ . In the Transformer, the decoder also represents as a vector what information the decoder will have at time step t. In the Transformer, the corresponding memory cell can be seen as V, and the matrix to obtain a weighted average of this is $$softmax(QK^T)$ You can see it as $. It can be seen that Transformer also obtains a weighted average of V instead of finding the address of the most relevant content.
 
@@ -120,7 +157,15 @@ If we analogize this to MultiheadAttention in Transformers, it is similar to how
 
 What is attention, why it uses softmax as the hidden layer output, why it computes a weighted sum, and why $$Attention(Q,K,V) = {softmax(\frac{QK^T} \over { \sqrt{d_{keys}}}) } In the form of \cdot V$$ , we checked whether QK and V were matrix multiplication. This time, we will look at what advantages there are over the existing LSTM and GRU in terms of gradient optimization. Unlike LSTM and GRU, Explicit memory performs relatively well in propagation and backpropagation. In seq2seq based on LSTM and GRU, the cell state passing through the hidden layer passes through many layers, so there is a high probability that the gradient will explode or vanish. However, since explicit memory applies an attention mechanism to calculate gradient for each output, it can learn using gradient descent, unlike GRU and LSTM seq2seq, which calculates the context directly instead of using a weighted average. (respectively long duration)
 
+# Reference
 
+[1] [NEURAL MACHINE TRANSLATION BY JOINTLY LEARNING TO ALIGN AND TRANSLATE Dzmitry Bahdanau Jacobs University Bremen, Germany KyungHyun Cho Yoshua Bengio∗](https://arxiv.org/pdf/1409.0473.pdf)
+
+[2] [Deep Learning (deeplearningbook.org)](https://www.deeplearningbook.org/)
+
+[3] [Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems: Géron, Aurélien: 9781492032649: Amazon.com: Books](https://www.amazon.com/Hands-Machine-Learning-Scikit-Learn-TensorFlow/dp/1492032646)
+
+[4] [Learning Deep Learning: Theory and Practice of Neural Networks, Computer Vision, Natural Language Processing, and Transformers Using TensorFlow: Ekman, Magnus: 9780137470358: Amazon.com: Books](https://www.amazon.com/Learning-Deep-Processing-Transformers-TensorFlow/dp/0137470355)
 
 
 
