@@ -133,6 +133,8 @@
                 {% endfor %}
             </ul>     
             <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
                 {% for category in site.categories %}
                     {% if category[0] == "OS" %}
                         <li><a href="/categories/OS" class="">Operating System  ({{category[1].size}})</a></li>
@@ -140,6 +142,8 @@
                 {% endfor %}
             </ul>     
             <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
                 {% for category in site.categories %}
                     {% if category[0] == "Tools" %}
                         <li><a href="/categories/Tools" class="">Tools ({{category[1].size}})</a></li>
@@ -177,16 +181,16 @@
                     {% endif %}
                 {% endfor %}
             </ul>
-
             <ul>
                 <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
                 <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
                 {% for category in site.categories %}
                     {% if category[0] == "DLS_C2" %}
-                        <li><a href="/categories/DLS_C2" class="">DLS assignment({{category[1].size}})</a></li>
+                        <li><a href="/categories/DLS_C2" class="">DLS Assignment({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
+
         <span class="nav__sub-title">ML</span>
             <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
             <ul>
@@ -243,11 +247,17 @@
         <span class="nav__sub-title">Mathmatics</span>
             <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
             <ul>
-                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
-                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+
                 {% for category in site.categories %}
                     {% if category[0] == "Linear Algebra" %}
                         <li><a href="/categories/Mathmatics/Linear_Algebra" class="">Linear Algebra ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Statistics" %}
+                        <li><a href="/categories/Mathmatics/Statisticd" class="">Statistics ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
