@@ -64,3 +64,10 @@ Python's Core Data Type is as follows.
 - Other Core Types
 - Program Unit Types
 - Implementation-related data types
+
+# References
+
+
+
+Learning Python(by Mark Lutz)  - chp 4
+
