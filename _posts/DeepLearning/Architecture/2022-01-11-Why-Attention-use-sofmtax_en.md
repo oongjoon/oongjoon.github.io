@@ -135,9 +135,7 @@ You may be wondering what the above has to do with the use of vectors in Memory 
 If you look at item A.1.2 of the original paper[1], there is an explanation for this.
 $$
 \begin{align}
-
- a(s_{i-1} , h) = e_{ij} = v_a^T \tanh (W_as_{i-1} + U_ah_{j}) 
-
+a(s_{i-1} , h) = e_{ij} = v_a^T \tanh (W_as_{i-1} + U_ah_{j}) 
 \end{align}
 $$
 
@@ -155,7 +153,7 @@ If we analogize this to MultiheadAttention in Transformers, it is similar to how
 
 ## Attention in optimization view
 
-What is attention, why it uses softmax as the hidden layer output, why it computes a weighted sum, and why $$Attention(Q,K,V) = {softmax(\frac{QK^T} \over { \sqrt{d_{keys}}}) } In the form of \cdot V$$ , we checked whether QK and V were matrix multiplication. This time, we will look at what advantages there are over the existing LSTM and GRU in terms of gradient optimization. Unlike LSTM and GRU, Explicit memory performs relatively well in propagation and backpropagation. In seq2seq based on LSTM and GRU, the cell state passing through the hidden layer passes through many layers, so there is a high probability that the gradient will explode or vanish. However, since explicit memory applies an attention mechanism to calculate gradient for each output, it can learn using gradient descent, unlike GRU and LSTM seq2seq, which calculates the context directly instead of using a weighted average. (respectively long duration)
+What is attention, why it uses softmax as the hidden layer output, why it computes a weighted sum, and why $$Attention(Q,K,V) = {softmax( { {QK^T} \over { \sqrt{d_{keys}}} }) } \cdot V$$ , we checked whether QK and V were matrix multiplication. This time, we will look at what advantages there are over the existing LSTM and GRU in terms of gradient optimization. Unlike LSTM and GRU, Explicit memory performs relatively well in propagation and backpropagation. In seq2seq based on LSTM and GRU, the cell state passing through the hidden layer passes through many layers, so there is a high probability that the gradient will explode or vanish. However, since explicit memory applies an attention mechanism to calculate gradient for each output, it can learn using gradient descent, unlike GRU and LSTM seq2seq, which calculates the context directly instead of using a weighted average. (respectively long duration)
 
 # Reference
 
