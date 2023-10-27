@@ -135,15 +135,16 @@ To be more specific, as long as direct access is possible, it can be replaced wi
 ```python
 X = 99
 
-def setX() :
+def setX(num) :
     global X
-    X = 88
+    # X = 88
+    X = num
 ```
 
 ```python
 import first
 
-first.setX()
+first.setX(num)
 print(first.X)
 ```
 
