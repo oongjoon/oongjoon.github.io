@@ -81,7 +81,10 @@ This is the backpropagation code provided by DLS. You can see that it unpacks th
 ## Any other way?
 
 If you follow the OOP programming style, you will be writing recursive. As many stack frames are generated, resource allocation is bound to increase. I thought that it would be ok to implement this simply if it is a layer of layer 3 revision. (I will try to implement this part in OOP style and add it again.)
+## Advanced course
 
+Code is ultimately a tool in which a computer calculates the logic thought by a person. The above Backpropagation can be explained with a mathmaticl expression. If you can understand the general mathmatical expression, you will be able to write back propagation code from scratch in other special examples.
+I am attaching a [link](https://jonaslalin.com/2021/12/10/feedforward-neural-networks-part-1/) for a general mathematical interpretation.
 # Mini Batch
 
 If you use mini batch, you will use shuffle. It can be said that more general data can be learned by simply shuffled because it can learn in a random order, but let's break it down a little more and look into it in detail.
