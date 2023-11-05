@@ -13,6 +13,9 @@ tags:
 toc: true
 toc_sticky: true
 ---
+23.11.04 add content about sys.path
+23.11.05 add content about script file's level and parent package's level
+
 ## Python Module and Pacakage
 
 The final project was done by BoostCampAi Tech. It was a medium-sized project in my opinion. Since it was a project that went through the stages of user flow, system design, prototype, and serving, I managed to manage the project in multiple modules and package units beyond this. In the early days, when importing a module, it was managed with an absolute path. To manage modules and packages, I imported them by specifying a detailed path with hardcoding. Realizing this problem, I changed it to relative import again, but because I was the only one studying the package and module, the team members did not understand it, so I went back to the absolute path. I thought that if I had informed my team members well at this time. In addition, when learning ML models, it was okay to simply manage multiple modules in one directory, but if I collaborate with engineers in multiple domains, I can project a package unit. I think that I will manage this, so I would like to take an opportunity to organize this content properly. (It is a very large amount of content, so I will organize the contents I studied while doing the project and additionally organize and update it.) (This book is about Python -Look at the cookbook and study it, and it is a closed book that I wrote in my word.)
@@ -153,6 +156,59 @@ python my_package/A/grok.py  # relative import error
 
 python -m my_package.A.grok  # OK
 ```
+In order to import a module with a double dotted name pattern, the script file must be at the same level as the partnt package. That is, it is possible when executing the script  `new.py` in the directory structure below.
+```python
+E
+__init__.py
+     c.py
+my_package
+__init__.py
+     A
+     __init__.py
+         grok.py
+         Gabi.py
+     B
+     __init__.py
+         mba.py
+         ccd.py
+new.py
+
+```
+
+
+## Optional(sys.path)
+```python
+E
+__init__.py
+     c.py
+my_package
+__init__.py
+     A
+     __init__.py
+         grok.py
+         Gabi.py
+     B
+     __init__.py
+         mba.py
+         ccd.py
+     test.py
+
+
+from ...E import c # Error
+```
+In the above directory structure, if you import the module from `__init__.py` in A package as shown below and run `test.py` using the top-level module script command, no error will occur.
 
 
 
+```python
+from B import mba
+```
+
+
+```python
+python my_package/A/grok.py
+
+```
+
+This is because the python script command adds the directory containing the script to sys.path. Since Python checks sys.path when specifying the module path, module import as above is possible.
+[Reference link](https://docs.python.org/3/library/sys.html#sys.path:~:text=in%20version%203.10.-,sys.path,-%C2%B6)
