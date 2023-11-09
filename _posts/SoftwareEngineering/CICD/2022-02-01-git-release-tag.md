@@ -135,7 +135,7 @@ To git@github.com:schacon/simplegit.git
 
 
 
-Even if you create a tag in git, it is not automatically reflected in the remote server. You need to push tag to the server with the `git push <remote repository> <tag name>` command. This command can push a single tag. To push multiple tags, use the `it push <remote storage> --tags` command. This command will reflect all tags that are not in the remote server to the server.
+Even if you create a tag in git, it is not automatically reflected in the remote server. You need to push tag to the server with the `git push <remote repository> <tag name>` command. This command can push a single tag. To push multiple tags, use the `git push <remote storage> --tags` command. This command will reflect all tags that are not in the remote server to the server.
 
 ## check out
 
