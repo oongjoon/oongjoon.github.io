@@ -36,7 +36,7 @@ $$ \mu = \frac {\Sigma z^{(2)}_{i}} {m} $$
 
 $$ \sigma = \frac {(\Sigma z^{(2)}_{i} - \mu )^2} {m} $$
 
-$$ z_{norm}^{(i)}  =  \frac {(\Sigma z^{(2)}_{i} - \mu )}{\sqrt {\sigma} } $$
+$$ z_{norm}^{(i)}  =  \frac {(\Sigma z^{(2)}_{i} - \mu )}{{\sigma} } $$
 
 However, this will disable the calculation if $$\Sigma$$ becomes zero. So, the calculation is as follows.
 
