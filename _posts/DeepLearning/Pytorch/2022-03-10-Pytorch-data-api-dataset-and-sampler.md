@@ -13,6 +13,8 @@ tags:
 toc: true
 toc_sticky: true
 ---
+23.12.01 modify Customsampler code : sampler  must return indices/key , so modify dic to dic.keys()
+
 Algorithms of artificial intelligence become more and more complex, but considering only deep learning 1.0 level, this means that features become more and more complex. In other words, it means more hand engineering of data. This means that the features become more and more complex, and the hand engineering weight on the data increases.
 
 For example, in the case of object detection, in addition to the label, additional feature engineering is required, such as a number of things (bounding box, object, multi-object label..etc). It costs a bit more than image recognition. In the case of natural language processing, feature engineering is required to tokenize words and create lookup tables. In the case of answering a question, additional feature engineering is required, such as information about the answer span and calculating the offset for when the passage is cut because it is long. Compared to text classification requiring only one label, the cost is relatively high.
@@ -194,7 +196,7 @@ class CustomSampler(torch.utils.data.Sampler) :
 ```
 NonintegerSamplerTestDataset = MySamplerTestDataset(dic)
 
-nonintegersampler = CustomSampler(dic)
+nonintegersampler = CustomSampler(dic.keys())
 
 print(list(torch.utils.data.DataLoader(NonintegerSamplerTestDataset , sampler = nonintegersampler)))
 ```
