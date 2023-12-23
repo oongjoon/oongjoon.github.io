@@ -116,6 +116,8 @@ If there is one remote with the entered branch, and if it is not local, `git che
 
 If you want to use the current branch as the tracking branch, you can use the command `git branch -u <remote><branch>` to set the current branch as the tracking branch. In this case, you can use the option `--set-upstream-to` instead of `-u`.
 
+To cancel tracking for a branch set as a tracking branch, use the `git branch <branch> --unset-upstream` command.
+
 To see information about the tracking branch, you can use the command `git branch -vv`. It shows a list of local tracking branches, showing if the local tracking branch is leading or lagging behind.
 
 
