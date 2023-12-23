@@ -114,7 +114,7 @@ You can use a command like `git --track <remote><branch>` to automatically gener
 
 If there is one remote with the entered branch, and if it is not local, `git checkout <branch>` will create a tracking branch as well.
 
-If you want to use the current branch as the tracking branch, you can use the command `git branch -u <remote><branch>` to set the current branch as the tracking branch. In this case, you can use the option `--set-upstream-to` instead of `-u`.
+If you want to use the current branch as the tracking branch, you can use the command `git branch -u <remote><branch>` to set the current branch as the tracking branch. In this case, you can use the option `--set-upstream-to` instead of `-u`. You can set up multiple tracking branches for one remote branch.
 
 To cancel tracking for a branch set as a tracking branch, use the `git branch <branch> --unset-upstream` command.
 
