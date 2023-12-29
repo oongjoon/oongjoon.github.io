@@ -24,7 +24,7 @@ Here, the Symbol and Notation methods for Term were referenced from Professor An
 |Symbol|Description|
 |----------------------------------------------|----------------- -------------------------------------------------- ----------------|
 |$$l$$| $$l $$th layer. $$ l $$ = 0, ... , L means the number of the layer with weights and bias.|
-|$$n^{[l]}$$| $$ l Means the number of nodes in the $$ th layer.|
+|$$n^{[l]}$$|   the number of nodes in the $$ l $$ th layer.|
 |$$j$$|$$j = 0,..., n^{[l]}$$|
 |$$k$$|$$k = 0, .... n^{[l-1]} $$|
 |$$m$$|$$m$$ is the batch size in the training step.|
