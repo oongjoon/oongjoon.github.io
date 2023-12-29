@@ -36,11 +36,11 @@ Here, the Symbol and Notation methods for Term were referenced from Professor An
 |$$g_{j}^{[l]}$$| $$l$$th layer activation function $$g_{j}^{[l]} : \mathbb{R}^{n^{[l]}} \rightarrow \mathbb{R}^{n^{[ l]}} $$ , $$g_{j}^{[l]} \in \mathbb{R}^{n^{[l]} } $$|
 
 ## Explanation in Mathematical View
-
-### $${Z}^{[l]}$$
 ![image](https://kau365-my.sharepoint.com/personal/oongjoon_kau_kr/Documents/%EB%B8%94%EB%A1%9C%EA%B7%B8%EC%9D%B4%EB%AF%B8%EC%A7%80/DeepLearning/Architecture/feedforward%20-%20%EB%B3%B5%EC%82%AC%EB%B3%B8.png)
 
 If you look at other educational materials, they limit the explanation to three nodes for ease of explanation. However, here, in order to define the general expression, we explain the $$ l$$th layer that converts $$ n^{[l-1]}$$ nodes into $$ n^{[l]}$$ nodes.  (Bias is omitted only in the figure.) . The picture above shows the $$ l$$th layer. The circle is the node and the connecting line is the weight. For notation, please refer to [Definition](#term-definition).
+
+### $${Z}^{[l]}$$ 's vectorization process
 
 Here, $$n^{[l-1]} $$ nodes are connected to $$z_{k,i}^{[l]}$$.
 thus ,
@@ -94,7 +94,10 @@ This can be expressed in a formula as follows:
 
 $$\vec{z}_{:, i}^{[l]} = \vec{W}^{[l]} \vec{a}_{:, i}^{[l - 1]} + \vec{b}^{[l]} $$
 
-The vector space is defined as .$$ \vec{z}_{:, i}^{[l]} \in \mathbb{R}^{n^{[l]}} , \vec{W}^{[l]} \in \mathbb{R}{{n^{[l]} \times n^{[l - 1]}}}  , \vec{b}^{[l]} \in \mathbb{R}^{n^{[l]}} , \vec{a}_{:, i}^{[l - 1]} \in \mathbb{R}^{n^{[l - 1]}}  $$  
+The vector space is defined as .$$\vec{z}_{:, i}^{[l]} \in \mathbb{R}^{ {n^{[l]}}} , \vec{W}^{[l]} \in \mathbb{R}^{n^{[l]} \times n^{[l - 1]}}  , \vec{b}^{[l]} \in \mathbb{R}^{ {n^{[l]}}} , \vec{a}_{:, i}^{[l - 1]} \in \mathbb{R}^{ {n^{[l - 1]}}}$$
+
+
+
 
 This is a math expression for one training data. Now, let's vectorize this by expanding it to the size of $$ m $$ batch data.
 
@@ -118,7 +121,7 @@ $$
 The vector space is defined as follows .$$ \vec{Z}^{[l]} \in \mathbb{R}^{n^{[l]} \times m} , \vec{A}^{[l - 1]} \in \mathbb{R}^{n^{[l - 1]} \times m}$$
 
 
-### output a 
+### $${A}^{[l]}$$ 's vectorization process
 
 
 When $$ Z^{[l]}$$ is calculated, it is passed as a parameter to $$g_{j}^{[l]}$$ for calculation. It can be expressed in the following way. 
