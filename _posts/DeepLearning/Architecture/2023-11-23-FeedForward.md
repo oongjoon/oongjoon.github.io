@@ -94,7 +94,7 @@ This can be expressed in a formula as follows:
 
 $$\vec{z}_{:, i}^{[l]} = \vec{W}^{[l]} \vec{a}_{:, i}^{[l - 1]} + \vec{b}^{[l]} $$
 
-The vector space is defined as .$$ \vec{z}_{:, i}^{[l]} \in \mathbb{R}^{n \times {n^{[l]}}} , \vec{W}^{[l]} \in \mathbb{R}{n^{[l]} \times n^{[l - 1]}} , \vec{b}^{[l] } \in \mathbb{R}^{n \times {n^{[l]}}} , \vec{a}_{:, i}^{[l - 1]} \in \mathbb{R} ^{n \times {n^{[l - 1]}}} $$
+The vector space is defined as .$$ \vec{z}_{:, i}^{[l]} \in \mathbb{R}^{n^{[l]}} , \vec{W}^{[l]} \in \mathbb{R}{{n^{[l]} \times n^{[l - 1]}}}  , \vec{b}^{[l]} \in \mathbb{R}^{n^{[l]}} , \vec{a}_{:, i}^{[l - 1]} \in \mathbb{R}^{n^{[l - 1]}}  $$  
 
 This is a math expression for one training data. Now, let's vectorize this by expanding it to the size of $$ m $$ batch data.
 
