@@ -1,5 +1,5 @@
 ---
-title : "Train,Dev,Test의 error를 어떻게 해석해야 할까요?"
+title : "What to do given Train,Dev,Test  error?"
 
 excerpt: "ML Project structing "
 
