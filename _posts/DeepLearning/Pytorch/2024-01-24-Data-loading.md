@@ -23,7 +23,7 @@ If you look at Pytorch's DataLoader class, there is a configuration called num_w
 num_workers (int, optional) how many subprocesses to use for data loading. 0 means that the data will be loaded in the main process. (default: 0)
 ```
 
-A subprocess is created with fork() (in the case of Unix), and data as much as batch_size * num_worker is loaded. Here, the point to note is that the calling main process is asynchronous to the worker. In other words, when the main process loads data into the GPU and trains it, num workers fetch data in parallel.
+A subprocess is created with fork() (in the case of Unix), and data as much as batch_size * num_worker is loaded. Here, the point to note is that the calling main process is asynchronous to the worker. In other words, when the main process loads data into the GPU and trains it, num workers fetch data in parallel.Since a worker is an I/O operation that reads data, it can be said that the worker is non-blocking the main process.
 
 One thing to keep in mind when using num_worker configuration is that you must consider how much CPU memory it consumes. The worker process occupies the same amount of CPU memory as the parent process. If the Datset Class contains a very large List, it will occupy as much memory as `worker * parent process size`.
 
@@ -46,8 +46,10 @@ Here is the definition from the pytorch docs of prefetch:
 
 >prefetch_factor (int, optional, keyword-only arg) Number of batches loaded in advance by each worker. 2 means there will be a total of 2 * num_workers batches prefetched across all workers. (default value depends on the set value for num_workers. If value of num_workers=0 default is None. Otherwise, if value of num_workers > 0 default is 2).
 
-All workers preload data as much as prefetch * batch_size. Therefore, communication between disk and host is reduced, greatly reducing overhead. However, this must also be set carefully considering the specifications of the CPU.
+All workers preload data as much as prefetch * batch_size. Therefore, communication between disk and host is reduced, greatly reducing overhead. However, this must also be set carefully considering the specifications of the CPU.  
 
+### In my opinion
+I think this is a difficult option to actually use. It may vary depending on how long the GPU will be waiting for data. However, if hardware resources are sufficient, I think it is more economical to lower the cost by optimizing the hardware specifications from the beginning.
 ## non_blocking
 The definition from pytorch docs of non block is as follows:
 
