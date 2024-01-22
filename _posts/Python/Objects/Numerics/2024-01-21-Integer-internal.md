@@ -51,7 +51,7 @@ Now let's learn about ob_digit. The digit type value is stored in ob_digit. digi
 
 ob_digit represents an integer value, and each element of the array is a digit. It is treated as a number of digits from 0 to 1, and the number of digits increases as the index increases. If an integer is expressed in decimal notation, a considerable number of digits are required. It is defined to store 32-bit data, but if only numbers up to 10 are stored, it will be a waste of storage space. Therefore, Python uses the $$2^{30}$$ base number system rather than the decimal system, that is, the base $$2^{30}$$ number system. The reason for $$2^{30}$$ is because the maximum base value to prevent overflow and underflow is $$2^{30}$$. 
 
-### 3.12 이전과 차이점
+### Representation before 3.12
 All posts dealing with the internal aspect of Integer are explained based on the struct below.
 ```c
 struct_longobject {
