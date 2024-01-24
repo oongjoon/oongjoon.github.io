@@ -1,5 +1,5 @@
 ---
-title : "Pytorch data api : worker, pinned memory, prefetch,  non-blocking?? 이 것들이 다 설정되면 어떻게 작동할까요?"
+title : "Pytorch data api: worker, pinned memory, prefetch, non-blocking?? Once this is all set up, how will it work?"
 
 
 

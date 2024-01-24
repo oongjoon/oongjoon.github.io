@@ -1,5 +1,5 @@
 ---
-title : "Syncrhonize,Asyncrhonize  vs  Non-blocking,Blocking  : Synchronize와 Blocking은 같은거 아닌가?"
+title : "Synchronize,Asyncrhonize vs Non-blocking,Blocking: Aren’t Synchronize and Blocking the same thing?"
 
 excerpt: "I/O , CPu overlaping"
 
