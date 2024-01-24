@@ -16,7 +16,7 @@ toc_sticky: true
 # Let's think about Pin-memory, worker, pre-fetch, and GPU non-blocking all combined.
 Looking at the pytorch docs, I only knew that if you specify a configuration called worker, a worker will be created and data will be loaded. The moment I combined this with pin-memory, pre-fetch, and GPU non-blocking, I found myself completely unable to understand how it worked. Pytorch itself is a framework that provides a high-level API, but I found out that this configuration allows deep learning model training to be set up at a low-level. It is believed that adjusting the training configuration at a low-level will help improve your capabilities not only as a deep learning engineer but also as a software engineer.
 
-!! If you don't know what Asynchronous is, I recommend you look at this [post]().
+!! If you don't know what Asynchronous is, I recommend you look at this [post](https://oongjoon.github.io/development/Sync-vs-Async-Block-vs-Nonblock/).
 ## worker
 If you look at Pytorch's DataLoader class, there is a configuration called num_worker. The description of num_worker is as follows.
 ```
