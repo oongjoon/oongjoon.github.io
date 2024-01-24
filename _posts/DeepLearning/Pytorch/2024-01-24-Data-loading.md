@@ -3,7 +3,7 @@ title : "Pytorch data api : worker, pinned memory, prefetch,  non-blocking?? 이
 
 
 
-excerpt: "Data Transfer optimization and overlap"
+excerpt: "Data Transfer optimization and overlap "
 
 categories:
   - Pytorch
