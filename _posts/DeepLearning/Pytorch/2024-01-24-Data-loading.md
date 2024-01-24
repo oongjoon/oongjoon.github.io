@@ -59,7 +59,7 @@ This option is available when pinned_memory is set to true, that is, when pinned
 
 
 ### nvidia
-![image](https://onedrive.live.com/embed?resid=7E81BBCD99889380%217835&authkey=%21AK_rXcRO4cr-r1s&width=1139&height=727)
+![image](https://onedrive.live.com/embed?resid=7E81BBCD99889380%217835&authkey=%21AK_rXcRO4cr-r1s&width=1139&height=727)  
 
 In this figure, h2d refers to data transfer from the device to the host, kernel refers to parallel computation, and d2h refers to data transfer from the device to hardware.
 NVIDIA's Cuda is said to reduce bottlenecks by splitting data into small chunks and then scheduling data transfer and computation.
@@ -73,11 +73,11 @@ Here, in the case of the sequential version, the stream (function) related to h2
 
 ## All together
 Let's explain the data fetching process by combining workers, pinned memory, prefetch, and non blocking.
-![image](https://onedrive.live.com/embed?resid=7E81BBCD99889380%217836&authkey=%21AO0XjU31chGSrI8&width=730&height=414)
+![image](https://onedrive.live.com/embed?resid=7E81BBCD99889380%217836&authkey=%21AO0XjU31chGSrI8&width=730&height=414)  
 pin memory configuration is set and num_worker is set to 2. Therefore, the main process (host) loads data as much as batch * 2 into pinned memory.
-![image](https://onedrive.live.com/embed?resid=7E81BBCD99889380%217837&authkey=%21AKiwiniQwNuDN2o&width=696&height=463)
+![image](https://onedrive.live.com/embed?resid=7E81BBCD99889380%217837&authkey=%21AKiwiniQwNuDN2o&width=696&height=463)  
 When data is transmitted to the device (gpu), the dataloader loads the next batch of data into pinned memory because the host is asynchronous for data transmission.
-![image](https://onedrive.live.com/embed?resid=7E81BBCD99889380%217838&authkey=%21AE0hAnAwRJMia-4&width=750&height=451)
+![image](https://onedrive.live.com/embed?resid=7E81BBCD99889380%217838&authkey=%21AE0hAnAwRJMia-4&width=750&height=451)  
 If the prefetch factor is set, data as much as prefetch factor*worker*batch will be loaded. The rest of the process will proceed the same as above.
 
 ![image](https://onedrive.live.com/embed?resid=7E81BBCD99889380%217839&authkey=%21AJHSTuTRWcQ3g2s&width=1091&height=622)
