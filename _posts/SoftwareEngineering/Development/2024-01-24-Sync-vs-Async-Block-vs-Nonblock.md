@@ -1,5 +1,5 @@
 ---
-title : "Synchronize,Asyncrhonize vs Non-blocking,Blocking: Aren’t Synchronize and Blocking the same thing?"
+title : "Synchronize,Asynchronize vs Non-blocking,Blocking: Aren’t Synchronize and Blocking the same thing?"
 
 excerpt: "I/O , CPu overlaping"
 
@@ -12,8 +12,8 @@ toc: true
 toc_sticky: true
 ---
 
-# Syncrhonize,Asyncrhonize,Non-blocking,Blocking??
-Recently, while reading the pytorch docs, a deep learning framework, I came across the word blocking. I thought the word blocking didn't mean anything, but while looking up related information on the forum, I saw that NVIDIA's Patrick had provided a link for deeper understanding. It was a post from NVIDIA, and blocking, non-blocking, synchronize, and asynchronize were repeated dozens of times, but I didn't understand the content at all. While searching for blocking and non-blocking, I found out that this concept is related to controlling the behavior of processes. This is the first time I learned that synchronize, asyncrhonize, blocking, and non-blocking are different concepts. While looking at related posts, I realized that I did not understand synchronize and asyncrhonize in detail. As an engineer, I feel like I need to know motion control because it's important for designing processes.
+# Synchronize,Asynchronize,Non-blocking,Blocking??
+Recently, while reading the pytorch docs, a deep learning framework, I came across the word blocking. I thought the word blocking didn't mean anything, but while looking up related information on the forum, I saw that NVIDIA's Patrick had provided a link for deeper understanding. It was a post from NVIDIA, and blocking, non-blocking, synchronize, and asynchronize were repeated dozens of times, but I didn't understand the content at all. While searching for blocking and non-blocking, I found out that this concept is related to controlling the behavior of processes. This is the first time I learned that synchronize, asynchronize, blocking, and non-blocking are different concepts. While looking at related posts, I realized that I did not understand synchronize and asynchronize in detail. As an engineer, I feel like I need to know motion control because it's important for designing processes.
 ## Sync vs Async
 
 ![image](https://onedrive.live.com/embed?resid=7E81BBCD99889380%217840&authkey=%21APnBHuRo6P7JPu0&width=435&height=250)
