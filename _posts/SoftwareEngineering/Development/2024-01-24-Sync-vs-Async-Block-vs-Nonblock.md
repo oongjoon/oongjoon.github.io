@@ -54,7 +54,7 @@ In this case, the user application requests a system call, but read returns an e
 Since data becomes accessible in kerenl and the time it takes for the read called by the user to return becomes longer, latency in IO increases and overall throughput decreases.
 
 ### Asynchronous blocking I/O
-![image](https://onedrive.live.com/embed?resid=7E81BBCD99889380%217849&authkey=%21APD7PUTY2InbhPo&width=546&height=392)
+![image](https://onedrive.live.com/embed?resid=7E81BBCD99889380%217850&authkey=%21AOh9xd1HXab2_wU&width=622&height=408)
 In this case, the user application requests a system call called select. select tells you whether the file descriptor is writable or readable. It will tell you about not only one file descriptor, but also about file descriptors less than or equal to 1024. From here, the user application can move on to the next task. That is, asynchronous. However, you will have to wait because select blocks the user application.
 Because this select is inefficient, it is not recommended for use in high-performance I/O.
 
