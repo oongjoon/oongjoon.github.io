@@ -41,20 +41,24 @@ Compared to the previous sync and async, the explanation explicitly has the oppo
 ## Four patterns
 ![image](https://onedrive.live.com/embed?resid=7E81BBCD99889380%217846&authkey=%21AIFoSWztVEf8__U&width=280&height=230)  
 
-This time, we will look at four cases that combine sync, async, blocking, and non-blocking. The examples below are taken from IBM's blog.
-###Synchronous blocking I/O
+This time, we will look at four cases that combine sync, async, blocking, and non-blocking. The examples below are taken from IBM's blog.  
+
+### Synchronous blocking I/O  
+
 ![image](https://onedrive.live.com/embed?resid=7E81BBCD99889380%217845&authkey=%21ACDJFjlBed31WXw&width=768&height=493)
 The user application makes a system call, and the system call blocks the application until the system call is completed.
 It is said to be efficient because it waits for the response of the system call without taking up CPU.
-When the read system call is called, the system call blocks the application and the context switches to kernel.
+When the read system call is called, the system call blocks the application and the context switches to kernel.  
 
-### Synchronous non-blocking I/O
+
+### Synchronous non-blocking I/O  
+
 ![image](https://onedrive.live.com/embed?resid=7E81BBCD99889380%217849&authkey=%21APD7PUTY2InbhPo&width=546&height=392)
 In this case, the user application requests a system call, but read returns an error and the call is not performed. In most cases, the user application must read data to perform the next task, so countless system calls are made until read is performed.
 Since data becomes accessible in kerenl and the time it takes for the read called by the user to return becomes longer, latency in IO increases and overall throughput decreases.
 
 ### Asynchronous blocking I/O
-<!-- ![image](https://onedrive.live.com/embed?resid=7E81BBCD99889380%217850&authkey=%21AOh9xd1HXab2_wU&width=622&height=408 ) -->
+
 In this case, the user application requests a system call called select. select tells you whether the file descriptor is writable or readable. It will tell you about not only one file descriptor, but also about file descriptors less than or equal to 1024. From here, the user application can move on to the next task. That is, asynchronous. However, you will have to wait because select blocks the user application.
 Because this select is inefficient, it is not recommended for use in high-performance I/O.
 
