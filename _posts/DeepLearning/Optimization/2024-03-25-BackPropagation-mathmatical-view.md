@@ -16,14 +16,7 @@ usemathjax : true
 ---
 In the last [post](https://woongjoonchoi.github.io/dlarchitecture/Feed-Forward-Network/), we showed the process of deriving FeedForwrad Network's forward propagation using a formula. This time, we will show the process of deriving backward propagation using a formula. 
 
-$$ \frac{\delta J }{\delta W_{(0,0)}^{[l]}}  ,  \frac{\delta J }{\delta b^{[l]}} $$
-$$ \frac{\delta J }{\delta W_{(0,0)}^{[l]}}  = \frac{\delta J }{\delta Z_{(0,0)}^{[l]}}  \frac{\delta Z_{(0,0)}^{[l]}}{\delta W_{(0,0)}^{[l]}}  $$
 
-
-$$ \sum_{i=0}^m$$
-
-$$ \partial $$
-$$ \frac{\partial{ \partial J}}{\partial w_{1, 1}^{[l]}}$$
 ## $$ \frac{\delta J }{\delta W^{[l]}}  ,  \frac{\delta J }{\delta b^{[l]}} $$ 
 
 
