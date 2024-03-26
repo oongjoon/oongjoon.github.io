@@ -20,7 +20,8 @@ In the last [post](https://woongjoonchoi.github.io/dlarchitecture/Feed-Forward-N
 ## $$ \frac{\delta J }{\delta W^{[l]}}  ,  \frac{\delta J }{\delta b^{[l]}} $$ 
 
 
-First, let's consider only $$ \frac{\delta J }{\delta W_{(0,0)}^{[l]}} $$.
+First, let's consider only $$ \frac{\delta J }{\delta W_{(0,0)}^{[l]}} $$.  
+
 $$
 \begin{align}
   \frac{\delta J }{\delta W_{(0,0)}^{[l]}} &= \sum_{i=0}^m \frac{\delta J }{\delta Z_{(0 ,i)}^{[l]}} \frac{\delta Z_{(0,i)}^{[l]}}{\delta W_{(0,0)}^{[l]}} \ newline &= \sum_{i=0}^m \frac{\delta J }{\delta Z_{(0,i)}^{[l]}} a_{(0,i)}^{[l] }
