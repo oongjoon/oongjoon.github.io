@@ -24,7 +24,7 @@ First, let's consider only $$ \frac{\delta J }{\delta W_{(0,0)}^{[l]}} $$.
 
 $$
 \begin{align}
-  \frac{\delta J }{\delta W_{(0,0)}^{[l]}} &= \sum_{i=0}^m \frac{\delta J }{\delta Z_{(0 ,i)}^{[l]}} \frac{\delta Z_{(0,i)}^{[l]}}{\delta W_{(0,0)}^{[l]}} \ newline &= \sum_{i=0}^m \frac{\delta J }{\delta Z_{(0,i)}^{[l]}} a_{(0,i)}^{[l] }
+  \frac{\delta J }{\delta W_{(0,0)}^{[l]}} &= \sum_{i=0}^m \frac{\delta J }{\delta Z_{(0 ,i)}^{[l]}} \frac{\delta Z_{(0,i)}^{[l]}}{\delta W_{(0,0)}^{[l]}} \newline &= \sum_{i=0}^m \frac{\delta J }{\delta Z_{(0,i)}^{[l]}} a_{(0,i)}^{[l] }
   \end{align}
   $$
 If we only consider (0,0) of the weight matrix, the above equation is established. If you change the row of W, the row of Z will be parameterized and changed. If you change the column of W, the row of A will change. Therefore, the following equation can be derived. 
@@ -182,7 +182,10 @@ w_{1, n^{[l - 1]}}^{[l]} & \dots & w_{j, n^{[l - 1]}}^{[l]} & \dots & w_{n^{[l]}
 \end{equation*}
 
 $$ 
+
 This can be expressed as: 
+
+
 $$
 
 \frac{\partial J}{\partial \vec{A}^{[l - 1]}} = {\partial \vec{W}^{[l]}}^{T} \frac{\partial J}{\partial \vec{Z}^{[l]}}
