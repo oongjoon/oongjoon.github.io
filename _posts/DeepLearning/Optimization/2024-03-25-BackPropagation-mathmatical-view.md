@@ -26,7 +26,8 @@ $$
 \begin{align}
   \frac{\delta J }{\delta W_{(0,0)}^{[l]}} &= \sum_{i=0}^m \frac{\delta J }{\delta Z_{(0 ,i)}^{[l]}} \frac{\delta Z_{(0,i)}^{[l]}}{\delta W_{(0,0)}^{[l]}} \newline &= \sum_{i=0}^m \frac{\delta J }{\delta Z_{(0,i)}^{[l]}} a_{(0,i)}^{[l] }
   \end{align}
-  $$
+  $$  
+  
 If we only consider (0,0) of the weight matrix, the above equation is established. If you change the row of W, the row of Z will be parameterized and changed. If you change the column of W, the row of A will change. Therefore, the following equation can be derived. 
 
 $$
@@ -74,8 +75,10 @@ When you finally expand the formula, it will unfold as shown above. If you vecto
 
 $$\frac{\delta J }{\delta W^{[l]}} = \frac{\delta J }{\delta Z^{[l]}} \cdot {A^{[L-1] }}^T$$
 
-This time, we will only think about $$ \frac{\delta J }{\delta b_{j}^{[l]}} $$.
-$$ \frac{\delta J }{\delta b_{j}^{[l]}} = \sum_{i=0}^{m} \frac{\delta J }{\delta Z_{j,i }^{[l]}}$$
+This time, we will only think about $$ \frac{\delta J }{\delta b_{j}^{[l]}} $$.  
+
+$$ \frac{\delta J }{\delta b_{j}^{[l]}} = \sum_{i=0}^{m} \frac{\delta J }{\delta Z_{j,i }^{[l]}}$$  
+
   If we vectorize all b and write it down, it will look like this:
 
 $$ \frac{\delta J }{\delta b^{[l]}}  = \sum_{axis=1} \frac{\delta J }{\delta Z^{[l]}} $$ 
@@ -83,10 +86,12 @@ $$ \frac{\delta J }{\delta b^{[l]}}  = \sum_{axis=1} \frac{\delta J }{\delta Z^{
 
 ## $$ \frac{\delta J }{\delta Z^{[l]}} $$
 
-This time, we will only think about $$ Z_{0,0}^{[l]}$$.
+This time, we will only think about $$ Z_{0,0}^{[l]}$$.  
 
-$$ \frac{\delta J }{\delta Z_{(0,0)}^{[l]}} = \sum_{p=0} \frac{\delta J }{\delta A_{(k, 0)}^{[l]}} \frac{\delta A_{(k,0)}^{[l]}}{\delta Z_{(0,0)}^{[l]}}$$
-Let's generalize this and think about $$ Z_{j,i}^{[l]}$$.
+$$ \frac{\delta J }{\delta Z_{(0,0)}^{[l]}} = \sum_{p=0} \frac{\delta J }{\delta A_{(k, 0)}^{[l]}} \frac{\delta A_{(k,0)}^{[l]}}{\delta Z_{(0,0)}^{[l]}}$$  
+
+Let's generalize this and think about $$ Z_{j,i}^{[l]}$$.  
+
 $$ \frac{\delta J }{\delta Z_{(j,i)}^{[l]}} = \sum_{p=0} \frac{\delta J }{\delta A_{(k, i)}^{[l]}} \frac{\delta A_{(k,i)}^{[l]}}{\delta Z_{(j,i)}^{[l]}}$$
 
 Considering only (j,i), vectorizing requires multiplying the vector by $$(1,n^{[l]}) (n^{[l]},1)$$. To generalize j and vectorize it, the rows of the matrix have a range of $$n^{[l]}$$. That is, the following derivation is derived:
@@ -140,10 +145,12 @@ $$
 
 ## $$ \frac{\delta J }{\delta A^{[l-1]}} $$
 
-This time, we will only think about A(0,0).
+This time, we will only think about A(0,0).  
+
 $$
 \frac{\partial J}{\partial a_{0, 0}^{[l - 1]}} = \sum_j \frac{\partial J}{\partial z_{j, 0}^{[l]} } \frac{\partial z_{j, 0}^{[l]}}{\partial a_{0, 0}^{[l - 1]}} = \sum_j \frac{\partial J}{\partial z_{j, 0}^{[l]}} w_{j, 0}^{[l]}.
-$$
+$$  
+
 You can see that sum is performed for j. This will be able to be expressed with vectorize later. Now, let's think about the generalized k,i.
 
 $$
