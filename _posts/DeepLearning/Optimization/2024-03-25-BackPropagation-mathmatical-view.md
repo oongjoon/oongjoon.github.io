@@ -87,7 +87,7 @@ $$ \frac{\delta J }{\delta b_{j}^{[l]}} = \sum_{i=0}^{m} \frac{\delta J }{\delta
 $$ \frac{\delta J }{\delta b^{[l]}}  = \sum_{axis=1} \frac{\delta J }{\delta Z^{[l]}} $$ 
 
 
-## \frac{\delta J }{\delta Z^{[l]}} 
+## $$ \frac{\delta J }{\delta Z^{[l]}} $$
 
 This time, we will only think about $$ Z_{0,0}^{[l]}$$.
 
@@ -129,7 +129,7 @@ $$
 \frac {\partial J}{\partial z^{[l]}} = \frac{\partial \vec{a}_{:, i}^{[l]}}{\partial \vec{z} _{:, i}^{[l]}} \frac{\partial J}{\partial \vec{a}_{:, i}^{[l]}}
 $$
 and ,
-$$ \frac {\partial J}{\partial \vec{a}_{:, i}^{[l]}} \in \R^{n^{[l]}} , \frac {\partial \vec{a}_{:, i}^{[l]}}{\partial \vec{z}_{:, i}^{[l]}} \in \R^{n^{[l ]} \times n^{[l]}}$$
+$$ \frac {\partial J}{\partial \vec{a}_{:, i}^{[l]}} \in \mathbb{R}^{n^{[l]}} , \frac {\partial \vec{a}_{:, i}^{[l]}}{\partial \vec{z}_{:, i}^{[l]}} \in \mathbb{R}^{n^{[l ]} \times n^{[l]}}$$
    It is included in the same real number set.
 This can be finally summarized as follows.
 
@@ -144,7 +144,7 @@ $$
 
 $$ 
 
-## \frac{\delta J }{\delta A^{[l-1]}} 
+## $$ \frac{\delta J }{\delta A^{[l-1]}} $$
 
 This time, we will only think about A(0,0).
 $$
