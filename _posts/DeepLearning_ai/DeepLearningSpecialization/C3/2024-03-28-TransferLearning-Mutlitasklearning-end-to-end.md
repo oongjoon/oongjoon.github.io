@@ -14,7 +14,9 @@ toc_sticky: true
 When learning a NeuralNetwork, if you are given as much data as you want, there is no need to devise a strategy for learning the NeuralNetwork. However, in the real world, sufficient data is rarely provided. Therefore, knowing study strategies depending on the situation will be of great help.
 
 ## Transfer Learning
-![image](https://1drv.ms/i/c/7e81bbcd99889380/IQPzJrVtcL4jT5_Hh47sGhFfAScwCAmYd0tmRZC4tKauyos?width=588&height=278)
+![image](https://1drv.ms/i/c/7e81bbcd99889380/IQPzJrVtcL4jT5_Hh47sGhFfAScwCAmYd0tmRZC4tKauyos?width=588&height=278)  
+
+
 Transfer Learning is a method of training a NeuralNetwork that performs Task B by using the learned NeuralNetwork to learn a NeuralNetwork that performs Task A. At this time, learning Task A is called Pre-training, and learning Task B is called Fine-tuning.
 
 Examples of Transfer Learning include:
@@ -29,7 +31,9 @@ In the case of transfer learning, it can be applied when the data in Task A is g
 In order to apply transfer learning, the following conditions must apply.
 * The inputs of Task A and B are the same (same format).
 * The number of data in Task A is greater than the number of data in Task B.
-* The low-level features learned in Task A are helpful in learning Task B.
+* The low-level features learned in Task A are helpful in learning Task B.  
+
+
 ## Multitask Learning
 MultiTask Learning is a method of training multiple tasks **simultaneously** to improve performance by taking advantage of the similarities and differences between different tasks.
 Examples of MulitTask Learning include:
