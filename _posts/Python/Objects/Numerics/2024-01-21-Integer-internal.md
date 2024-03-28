@@ -13,6 +13,8 @@ tags:
 toc: true
 toc_sticky: true
 ---
+
+24-03-29  Add about carry,f( 64bit ) , pb,z(32bit)
 # Integer Internal after Python 3.12
 
 When using Python, you will use numeric objects such as integers. When using integers, the fact that it supports arbitary precision was surprising, but I just accepted it. Even if you don't worry about this, it can be okay because it is well abstracted. However, I think that in order to become a better engineer, you need to be able to see how things work at low-level rather than high-level. I think that decomposing high-level abstracted operations will be helpful in problem-solving skills because it is the same as decomposing a problem. Additionally, understanding the implementation at a low-level will increase the likelihood of applying this idea to other areas.
@@ -212,7 +214,7 @@ for (i = 0; i < size_a; ++i) {
 
 ``` 
 
-Here, f is the value of the ith digit of a, pz is a pointer indicating the digit of the multiplication result, pb is a pointer pointing to the digit of b, and pbend is a pointer pointing to the first digit of b. This code simply performs C language multiplication and then prevents overflow and underflow and shifts the carry. `carry += *pz + *pb++ * f;` adds the ith digit of a * the ith digit of b to the ith digit of z. Use the inplace operator to increase the value of pb, that is, the number of digits. In `*pz++ = (digit)(carry & PyLong_MASK);`, assign a value smaller than the size of base to the ith digit of pz with PyLong_MASK. At the same time, the value of pz, that is, the number of digits of z, is increased. The optimization of pointer's arithmetic operation and inplace operation combined may be confusing, so I explained it separately.
+Here, f is the value of the ith digit of a, pz is a pointer indicating the digit of the multiplication result, pb is a pointer pointing to the digit of b, and pbend is a pointer pointing to the first digit of b. Here, carry,f is a 64bit u_int and pz,pb are pointers pointing to a 32bit int.This code simply performs C language multiplication and then prevents overflow and underflow and shifts the carry. `carry += *pz + *pb++ * f;` adds the ith digit of a * the ith digit of b to the ith digit of z. Use the inplace operator to increase the value of pb, that is, the number of digits. In `*pz++ = (digit)(carry & PyLong_MASK);`, assign a value smaller than the size of base to the ith digit of pz with PyLong_MASK. At the same time, the value of pz, that is, the number of digits of z, is increased. The optimization of pointer's arithmetic operation and inplace operation combined may be confusing, so I explained it separately.
 
 ## Divide
 If you look inside Python's division, single-digit division is simply performed using the C language division operation. However, when the number of digits increases, it is optimized using Algorithm D proposed by Professor Donald Knuth. This is included in chapter 4.3.1 of The Art of Computer Programming, Vol.2. I will not introduce this separately. Many division tokens utilize the basic operation x_divrem, and it would be good to know that x_divrem is internally composed of Algorithm D.
