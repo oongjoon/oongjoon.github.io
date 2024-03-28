@@ -52,7 +52,9 @@ Multi-task learning can be considered in the following situations:
 * **Generally**, the data size of each task is similar.
    * Multi-task Learning is equivalent to fine-tuning one task after pretraining with a task using 99,000 data if 100 tasks each have 1,000 pieces of data. If the data of one task is significantly large, transfer learning will not work well because the number of data in the fine-tuning task is greater than that in the pre-training task. (Transfer learning is a superordinate concept of multitask learning).
 * Train a sufficiently large Neural Network.
-   * If the Neural Network is not large enough, a Neural Network that performs each task individually will have better performance.
+   * If the Neural Network is not large enough, a Neural Network that performs each task individually will have better performance.  
+
+
 ## End-to-End
 End-to-End refers to a Neural Network that derives output directly from data. When solving a problem in the field of Computer Science, the problems are broken down into small units, small problems are solved, and these are combined to solve the original problem. Neural Network can also solve the original problem using Neural Network or Domain Knowledge, which solves each problem by dividing the problem into small units.
 Examples include:
