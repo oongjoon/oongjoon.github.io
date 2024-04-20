@@ -9,7 +9,7 @@ excerpt: "DAG or Cycle"
 categories:
   - Algorithm
 tags:
-  - [Algorithm,6.006,Computer Science]
+  - [Algorithm,Introduction-to-algorithm-6.006,Computer Science]
 
 toc: true
 toc_sticky: true
@@ -76,13 +76,14 @@ In this case, DFS(v) is called and terminated, and then DFS(u) is called and ter
 I learned about the formal definition of topological ordering and the algorithm for calculating it in linear time. The ultimate goal of Topological Ordering is to determine whether something is DAG. Additionally, if there is a cycle, you will want to know the part of the cycle. Using what we learned above, let's determine whether the given graph is a DAG.
 ### Cycle Detection
 
-We confirmed that DAG has a topological order. If the proposition called DAG is P and the proposition that it has a topological order is Q, then $$ \neg P \rightarrow \neg Q $$
+We confirmed that DAG has a topological order. If the proposition called DAG is P and the proposition that it has a topological order is Q, then $$ \neg Q \rightarrow \neg P $$
 will be established. In other words, if it does not have a topological order, it must be a Cyclig Graph. Therefore, you can tell whether it is a DAG or not by checking whether the reverse finish order satisfies the topological order property. This can be checked in $$ O(V +E) $$.
 ### Cycle Return
 In addition to simply detecting a cycle, you may be curious about which vertices are included in the cycle. In order to return this cycle, we will set up and prove the Claim below.
 #### Claim and Proof
 > If graph G contains Cycle, Full-DFS traverse an edge from v to ancestor of v .
-Here, ancestor refers to a vertex for which the call has not yet been completed.
+Here, ancestor refers to a vertex for which the call has not yet been completed. 
+
   Let's assume that Cycle consists of vertices (v0,v1,....vk,v0).
 
   For generality, let us assume v0 is the vertex that first calls the Full-DFS algorithm. Any vertex v-i will continue to call vertex v-i+1. This means that the call to v-i+1 ends before the call to v-i ends. Therefore, the call to v-k will finish before the call to v0.
