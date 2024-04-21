@@ -1,5 +1,5 @@
 ---
-title : "문자열 조작 : 여러가지 솔루션과 내부구현 비교"
+title : "String manipulation: Comparison of various solutions and internal implementation"
 
 
 
@@ -8,7 +8,7 @@ excerpt: "Python String Operation"
 categories:
 - Python
 tags:
-- [Python,Object,Builtin,PythonInternal,String]
+- [Python,Object,Builtin,PythonInternal,String,StringInternal]
 # classes : wide
 toc: true
 toc_sticky: true
