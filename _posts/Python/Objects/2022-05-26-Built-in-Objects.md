@@ -8,7 +8,7 @@ excerpt: "Python Objects"
 categories:
   - Python
 tags:
-  - [Python,Object,Builtin]
+  - [Python,Object,Builtin,LearningPython,Chp4Objetcs]
 # classes : wide
 toc: true
 toc_sticky: true
