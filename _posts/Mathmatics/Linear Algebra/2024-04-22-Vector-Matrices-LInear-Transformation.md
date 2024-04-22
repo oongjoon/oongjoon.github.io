@@ -50,7 +50,9 @@ For example, vector $$ \begin{bmatrix} 3 \\ 2 \end{bmatrix} $$ becomes $$ 3\cdot
 
 #### different basis vector
 
-If the basis vector is $$\hat{i} = \begin{bmatrix} 2 \\ 1 \end{bmatrix} , \hat{j} = \begin{bmatrix} 1 \\ 2 \end{bmatrix} $$ I would say so. At this time, vector $$ \begin{bmatrix} 3 \\ 2 \end{bmatrix} $$ is $$ \begin{bmatrix} 3 \\ 2 \end{bmatrix} $$ is $$ 3\cdot \hat{i } + 2 \cdot \hat{j} =3 \cdot \begin{bmatrix} 2 \\ 1 \end{bmatrix} + 2 \cdot \begin{bmatrix} 1 \\ 2 \end{bmatrix} = \begin{ bmatrix}  8 \\ 7 \end{bmatrix} $$.
+If the basis vector is $$\hat{i} = \begin{bmatrix} 2 \\ 1 \end{bmatrix} , \hat{j} = \begin{bmatrix} 1 \\ 2 \end{bmatrix} $$ I would say so. At this time, vector $$ \begin{bmatrix} 3 \\ 2 \end{bmatrix} $$ is $$ \begin{bmatrix} 3 \\ 2 \end{bmatrix} $$ is $$ 3\cdot \hat{i}  + 2  \cdot \hat{j}  =3 \cdot \begin{bmatrix} 2 \\ 1 \end{bmatrix} + 2 \cdot \begin{bmatrix} 1 \\ 2 \end{bmatrix} =  \begin{bmatrix} 8 \\ 7 \end{bmatrix} $$ .
+
+<!-- $$ 3\cdot \hat{i}  + 2  \cdot \hat{j}  =3 \cdot \begin{bmatrix} 2 \\ 1 \end{bmatrix} + 2 \cdot \begin{bmatrix} 1 \\ 2 \end{bmatrix} =  \begin{bmatrix} 8 \\ 7 \end{bmatrix} $$ -->
 
 ### Span
 The span of a vector is a set of vectors that can be obtained when a basis vector is multiplied by an arbitrary scalar. Let's look at several examples.
@@ -87,12 +89,12 @@ So, what are some examples of non-linear transformation?
 Let’s look at linear transformation from a vector perspective. To see it from a vector perspective, you only need to know how the two basis vectors $$ \hat i, \hat j$$ are transformed. The transformation of other vectors is obtained as a transformed basis vector.
 For example, let's say $$ \overrightarrow v = -1 \cdot \hat i + 2 \cdot \hat j $$.
 $$ \overrightarrow v $$ after transformation is the addition of -1 times $$ \hat i$$ and 2 times $$\hat j $$ after transformation. Because, before transformation, $$ \overrightarrow v $$ consists of basis vectors $$ \hat i, \hat j $$, and maintains the same linear combination after transformation.
-That is, $$ \overrightarrow transformed \ v = -1 \cdot \hat transformed \ i + 2 \cdot \hat transformed \ j $$. Therefore, if you know the transformed $$ \hat i, \hat j $$, you can infer the transformed $$ \overrightarrow v $$.
+That is, $$ transformed \ \overrightarrow  v = -1 \cdot  transformed \ \hat i + 2 \cdot  transformed \ \hat j $$. Therefore, if you know the transformed $$ \hat i, \hat j $$, you can infer the transformed $$ \overrightarrow v $$.
 
 ### Matrix View
 You can look at this from a matrix perspective rather than a vector perspective.
-For example, let's consider a matrix,vector called $$ \begin{bmatrix} a & b \\ c & d \end{bmatrix} \begin{bmatrix} x \\ y \end{bmatrix}$$. This is the equation $$ x \cdot \begin{bmatrix} a \\ b \end{bmatrix} + y \cdot \begin{bmatrix} c \\ d \end{bmatrix} $$. That is, $$ \begin{bmatrix} a \\ b \end{bmatrix} $$ becomes $$ transformed \hat  i $$ , $$ \begin{bmatrix} c \\ d \end{bmatrix} $$ You can think of it as $$  transformed \hat j $$. x,y will be the scaler for the basis vector.
-For example, for clockwise 90 degree rotation, $$ \begin{bmatrix} 0 & 1 \\ -1 & 0 \end{bmatrix} $$ would be, and $$  transformed \hat i = \begin{bmatrix} 0 \\ 1 \end{bmatrix} ,  transformed \hat j = \begin{bmatrix} -1 \\ 0 \end{bmatrix} $$ .
+For example, let's consider a matrix,vector called $$ \begin{bmatrix} a & b \\ c & d \end{bmatrix} \begin{bmatrix} x \\ y \end{bmatrix}$$. This is the equation $$ x \cdot \begin{bmatrix} a \\ b \end{bmatrix} + y \cdot \begin{bmatrix} c \\ d \end{bmatrix} $$. That is, $$ \begin{bmatrix} a \\ b \end{bmatrix} $$ becomes $$ transformed \ \hat  i $$ , $$ \begin{bmatrix} c \\ d \end{bmatrix} $$ You can think of it as $$  transformed \ \hat j $$. x,y will be the scaler for the basis vector.
+For example, for clockwise 90 degree rotation, $$ \begin{bmatrix} 0 & 1 \\ -1 & 0 \end{bmatrix} $$ would be, and $$  transformed \ \hat i = \begin{bmatrix} 0 \\ 1 \end{bmatrix} ,  transformed \ \hat j = \begin{bmatrix} -1 \\ 0 \end{bmatrix} $$ .
 
 
 
@@ -107,7 +109,7 @@ Therefore, $$ \begin{bmatrix} 1& 1 \\ 0& 1 \end{bmatrix} \begin{bmatrix} 0 &-1 \
 Here, you need to remember to apply the transformation on the right first, then the transformation on the left. Since it is derived from the composite function f(g(x)), it must be read from right to left.
 
 Any Matrix $$ \begin{bmatrix} 0 & 2 \\ -1 & 0 \end{bmatrix} \begin{bmatrix} 1 &1 \\ -2& 0 \end{bmatrix} = \begin{bmatrix} ?& ? \\ ?& ? \end{bmatrix} Let's consider $$. Here the new matrix will be the final $$ \hat i ,\hat j $$.
-From the left, we will name the matrices M1 and M2, respectively. After M2 transformation, $$ \hat i, \hat j$$ becomes $$ \begin{bmatrix} 1 \\ 1 \end{bmatrix} , \begin{bmatrix} -2 \\ 0 \end{bmatrix} $$ It's possible. If M1 transformation is applied continuously, $$ \hat i $$ is $$\begin{bmatrix} 0 &2 \\ -1 &0 \end{bmatrix} \begin{bmatrix} 1 \\ 1 \end{bmatrix} \begin {bmatrix} 2 \\ 1\end{bmatrix} $$ , $$ \hat j $$ is $$\begin{bmatrix} 0 &2 \\ -1& 0 \end{bmatrix} \begin{bmatrix} -2 \ It will be \ 0 \end{bmatrix} \begin{bmatrix} 0 \\ -2\end{bmatrix} $$ .
+From the left, we will name the matrices M1 and M2, respectively. After M2 transformation, $$ \hat i, \hat j$$ becomes $$ \begin{bmatrix} 1 \\ 1 \end{bmatrix} , \begin{bmatrix} -2 \\ 0 \end{bmatrix} $$ It's possible. If M1 transformation is applied continuously, $$ \hat i $$ is $$\begin{bmatrix} 0 &2 \\ -1 &0 \end{bmatrix} \begin{bmatrix} 1 \\ 1 \end{bmatrix} =  \begin {bmatrix} 2 \\ 1\end{bmatrix} $$ , $$ \hat j $$ is $$\begin{bmatrix} 0 &2 \\ -1& 0 \end{bmatrix} . \begin{bmatrix} -2 \\ 0 \end{bmatrix} = \begin{bmatrix} 0 \\ -2\end{bmatrix} $$ .
 
 ### Matrix Multiplication Order is Important?
 Does the order of Matrix Products matter? The conclusion is yes.
@@ -119,6 +121,8 @@ In the case of A(BC), since (BC) also represents a continuous transformation, th
 
 ## Summary
 
+
+
 In this article, we looked at Vector, Matrix, and Linear Transformation from Geometrical View. A summary of today's content is as follows.
 - The linear combination of any scalar represents a space of a specific dimension and is called a span.
 - Linear Combination can be expressed as Vector-Matrix Multiplication, which transforms a basis vector.
@@ -127,3 +131,5 @@ In this article, we looked at Vector, Matrix, and Linear Transformation from Geo
 
 ## References
 [3blue1brown-linear algebra](https://www.youtube.com/watch?v=XkY2DOUCWMU&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab&index=4)
+
+
