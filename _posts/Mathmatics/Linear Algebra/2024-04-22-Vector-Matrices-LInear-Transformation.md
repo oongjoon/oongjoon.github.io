@@ -30,7 +30,7 @@ What you think of Vector will depend on your major.
 ### Operation and Coordinate Systems
 A vector is an arrow located in a certain coordinate system. There is a starting point and an ending point, but unlike in Physics, from the perspective of Linear Algebra, a Vector is always the same vector no matter where it is located. In other words, if there is a vector on the xy plane, the starting point can always be located at the origin.
 From a Computer Science perspective, Vector $$ \begin{bmatrix} 2 \\ 3 \end{bmatrix}$$ is +2 away from the y-axis and +3 away from the x-axis.
-Addition of a vector connects the starting point of the A vector and the ending point of the B vector by placing the starting point of the B vector at the end of the A vector. If you see this in the Coordinate System, $$ \begin{bmatrix} x1 \\ y1 \end{bmatrix} + \begin{bmatrix} x2 \\ y2 \end{bmatrix}$$ is $$ \begin{bmatrix} x1+x2 It becomes \\ y1+y2 \end{bmatrix}$$.
+Addition of a vector connects the starting point of the A vector and the ending point of the B vector by placing the starting point of the B vector at the end of the A vector. If you see this in the Coordinate System, $$ \begin{bmatrix} x1 \\ y1 \end{bmatrix} + \begin{bmatrix} x2 \\ y2 \end{bmatrix}$$ is $$ \begin{bmatrix} x1+x2 \\ y1+y2 \end{bmatrix}$$.
 Multiplication of a vector means multiplying the vector by a number. For example, $$ c \cdot \begin{bmatrix} 2 \\ 3 \end{bmatrix} = \begin{bmatrix} 2 \cdot c \\ 3\cdot c \end{bmatrix} $$. If you multiply the Vector by 1.7, the length of the Vector will be 1.7 times, and if you multiply the Vector by -3, the Vector will flip horizontally based on the straight line where the Vector is, and its length will be tripled. This is called “Scaling.”
 
   <!-- $$ c \cdot \begin{bmatrix} 2 \\ 3 \end{bmatrix} = \begin{bmatrix} 2 \cdot c \\ 3\cdot c \end{bmatrix} $$ -->
@@ -50,16 +50,16 @@ For example, vector $$ \begin{bmatrix} 3 \\ 2 \end{bmatrix} $$ becomes $$ 3\cdot
 
 #### different basis vector
 
-If the basis vector is $$\hat{i} = \begin{bmatrix} 2 \\ 1 \end{bmatrix} , \hat{j} = \begin{bmatrix} 1 \\ 2 \end{bmatrix} $$ I would say so. At this time, vector $$ \begin{bmatrix} 3 \\ 2 \end{bmatrix} $$ is $$ \begin{bmatrix} 3 \\ 2 \end{bmatrix} $$ is $$ 3\cdot \hat{i } + 2 \cdot \hat{j} =3 \cdot \begin{bmatrix} 2 \\ 1 \end{bmatrix} + 2 \cdot \begin{bmatrix} 1 \\ 2 \end{bmatrix} = \begin{ bmatrix} becomes 8 \\ 7 \end{bmatrix} $$.
+If the basis vector is $$\hat{i} = \begin{bmatrix} 2 \\ 1 \end{bmatrix} , \hat{j} = \begin{bmatrix} 1 \\ 2 \end{bmatrix} $$ I would say so. At this time, vector $$ \begin{bmatrix} 3 \\ 2 \end{bmatrix} $$ is $$ \begin{bmatrix} 3 \\ 2 \end{bmatrix} $$ is $$ 3\cdot \hat{i } + 2 \cdot \hat{j} =3 \cdot \begin{bmatrix} 2 \\ 1 \end{bmatrix} + 2 \cdot \begin{bmatrix} 1 \\ 2 \end{bmatrix} = \begin{ bmatrix}  8 \\ 7 \end{bmatrix} $$.
 
 ### Span
 The span of a vector is a set of vectors that can be obtained when a basis vector is multiplied by an arbitrary scalar. Let's look at several examples.
 
 - case1 :$$ \overrightarrow a + y \cdot \overrightarrow b ,\qquad \overrightarrow a \neq \emptyset , \overrightarrow b \neq \emptyset $$
    - In this case, an arbitrary straight line will be the span.
-- case2 :$$ neq 0 $$
+- case2 :$$ x \cdot \overrightarrow a + y \cdot \overrightarrow b   ,\qquad \overrightarrow a = c \cdot \overrightarrow b , \overrightarrow a \neq \emptyset , \overrightarrow b \neq \emptyset ,  c \neq 0 $$
    - In this case as well, a random straight line will become a span.
-- case3 :$$
+- case3 $$ x \cdot \overrightarrow a + y \cdot \overrightarrow b   ,\qquad  \overrightarrow a  = \emptyset , \overrightarrow b =  \emptyset $$
    - In this case, it's going to be the origin.
   
 #### Vector as Points
@@ -91,8 +91,8 @@ That is, $$ \overrightarrow transformed \ v = -1 \cdot \hat transformed \ i + 2 
 
 ### Matrix View
 You can look at this from a matrix perspective rather than a vector perspective.
-For example, let's consider a matrix,vector called $$ \begin{bmatrix} a & b \\ c & d \end{bmatrix} \begin{bmatrix} x \\ y \end{bmatrix}$$. This is the equation $$ x \cdot \begin{bmatrix} a \\ b \end{bmatrix} + y \cdot \begin{bmatrix} c \\ d \end{bmatrix} $$. That is, $$ \begin{bmatrix} a \\ b \end{bmatrix} $$ becomes $$ \hat transformed \ i $$ , $$ \begin{bmatrix} c \\ d \end{bmatrix} $$ You can think of it as $$ \hat transformed \ j $$. x,y will be the scaler for the basis vector.
-For example, for clockwise 90 degree rotation, $$ \begin{bmatrix} 0 & 1 \\ -1 & 0 \end{bmatrix} $$ would be, and $$ \hat transformed \ i = \begin{bmatrix} 0 \\ 1 \end{bmatrix} , \hat transformed \ j = \begin{bmatrix} -1 \\ 0 \end{bmatrix} $$ .
+For example, let's consider a matrix,vector called $$ \begin{bmatrix} a & b \\ c & d \end{bmatrix} \begin{bmatrix} x \\ y \end{bmatrix}$$. This is the equation $$ x \cdot \begin{bmatrix} a \\ b \end{bmatrix} + y \cdot \begin{bmatrix} c \\ d \end{bmatrix} $$. That is, $$ \begin{bmatrix} a \\ b \end{bmatrix} $$ becomes $$ transformed \hat  i $$ , $$ \begin{bmatrix} c \\ d \end{bmatrix} $$ You can think of it as $$  transformed \hat j $$. x,y will be the scaler for the basis vector.
+For example, for clockwise 90 degree rotation, $$ \begin{bmatrix} 0 & 1 \\ -1 & 0 \end{bmatrix} $$ would be, and $$  transformed \hat i = \begin{bmatrix} 0 \\ 1 \end{bmatrix} ,  transformed \hat j = \begin{bmatrix} -1 \\ 0 \end{bmatrix} $$ .
 
 
 
@@ -102,8 +102,8 @@ We learned how to view Linear Transformation from a Matrix perspective. So, what
 
 
 This is expressed as matrix multiplication. Let's take an example.
-$$\begin{bmatrix} 0 \ 1 \\ -1 \ 0 \end{bmatrix} $$, which is 90 degree clockwise rotation, and $$\begin{bmatrix} 0 \ 1 \\ -1 \ 0 \end, which is sheer transformation. Let’s apply {bmatrix} $$. The new $$ \hat i , \hat j $$ will be $$ \begin{bmatrix} 1 \\ 1 \end{bmatrix} , \begin{bmatrix} -1 \\ 1 \end{bmatrix}$$ respectively. It will. In other words, $$ \begin{bmatrix} 1 &-1 \\ 1& 0 \end{bmatrix} $$ becomes the final linear transformation. This can be viewed as one transformation rather than two consecutive transformations.
-Therefore, $$ \begin{bmatrix} 1& 1 \\ 0& 1 \end{bmatrix} \begin{bmatrix} 0 &-1 \\ 1& 0 \end{bmatrix} = \begin{bmatrix} 1 &-1 \\ 1 Since &0 \end{bmatrix} $$, the product of the two matrices is equivalent to applying one transformation and applying another transformation from a geometric perspective.
+$$\begin{bmatrix} 0 \ 1 \\ -1 \ 0 \end{bmatrix} $$, which is 90 degree clockwise rotation, and $$\begin{bmatrix} 0 \ 1 \\ -1 \ 0 \end{bmatrix} $$, which is sheer transformation. Let’s apply . The new $$ \hat i , \hat j $$ will be $$ \begin{bmatrix} 1 \\ 1 \end{bmatrix} , \begin{bmatrix} -1 \\ 1 \end{bmatrix}$$ respectively. It will. In other words, $$ \begin{bmatrix} 1 &-1 \\ 1& 0 \end{bmatrix} $$ becomes the final linear transformation. This can be viewed as one transformation rather than two consecutive transformations.
+Therefore, $$ \begin{bmatrix} 1& 1 \\ 0& 1 \end{bmatrix} \begin{bmatrix} 0 &-1 \\ 1& 0 \end{bmatrix} = \begin{bmatrix} 1 &-1 \\ 1  &0 \end{bmatrix} $$, the product of the two matrices is equivalent to applying one transformation and applying another transformation from a geometric perspective.
 Here, you need to remember to apply the transformation on the right first, then the transformation on the left. Since it is derived from the composite function f(g(x)), it must be read from right to left.
 
 Any Matrix $$ \begin{bmatrix} 0 & 2 \\ -1 & 0 \end{bmatrix} \begin{bmatrix} 1 &1 \\ -2& 0 \end{bmatrix} = \begin{bmatrix} ?& ? \\ ?& ? \end{bmatrix} Let's consider $$. Here the new matrix will be the final $$ \hat i ,\hat j $$.
